@@ -2,6 +2,7 @@ package net.ommina.wallpapercraft;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,6 +18,8 @@ public class Wallpapercraft {
 
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
+    public static final ItemGroup TAB = new CreativeTab();
+    public static final String MODID = "wallpapercraft";
 
     public Wallpapercraft() {
         // Register the setup method for modloading
