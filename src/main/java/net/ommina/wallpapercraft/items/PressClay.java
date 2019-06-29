@@ -5,14 +5,14 @@ import net.ommina.wallpapercraft.Wallpapercraft;
 
 public class PressClay extends Item {
 
-    public static final String REGISTRY = "pressclay";
+    public static final String NAME = "pressclay";
 
     public PressClay () {
         super( new Item.Properties()
              .maxStackSize( 1 )
              .group( Wallpapercraft.TAB ) );
 
-        setRegistryName( REGISTRY );
+        setRegistryName( NAME );
 
     }
 

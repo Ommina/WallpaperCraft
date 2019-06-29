@@ -1,6 +1,6 @@
-﻿{
+{
   "parent": "item/handheld",
   "textures": {
-    "layer0": "wallpapercraft:item/pressrick"
+    "layer0": "wallpapercraft:item/pressclay"
   }
 }

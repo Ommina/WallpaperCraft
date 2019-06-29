@@ -7,82 +7,78 @@ import net.minecraftforge.registries.ObjectHolder;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 
-@ObjectHolder(Wallpapercraft.MODID)
+@ObjectHolder( Wallpapercraft.MODID )
 public class ModItems {
 
-    public static Item foo = new BlockItem( ModBlocks.BLOCKS.get( "auralampcyan-8" ), new Item.Properties() );
-
-    @ObjectHolder("pressauralamp")
+    @ObjectHolder( PressAuraLamp.NAME )
     public static PressAuraLamp PRESS_AURALAMP;
 
-    @ObjectHolder(PressBlank.REG)
+    @ObjectHolder( PressBlank.NAME )
     public static PressBlank PRESS_BLANK;
 
-    @ObjectHolder("pressbrick")
+    @ObjectHolder( PressBrick.NAME )
     public static PressBrick PRESS_BRICK;
 
-    @ObjectHolder("presscheckered")
+    @ObjectHolder( PressCheckered.NAME )
     public static PressCheckered PRESS_CHECKERED;
 
-    @ObjectHolder(PressClay.REGISTRY)
+    @ObjectHolder( PressClay.NAME )
     public static PressClay PRESS_CLAY;
 
-    @ObjectHolder("presscolouredbrick")
+    @ObjectHolder( PressColouredBrick.NAME )
     public static PressColouredBrick PRESS_COLOUREDBRICK;
 
-    @ObjectHolder("pressdamask")
+    @ObjectHolder( PressDamask.NAME )
     public static PressDamask PRESS_DAMASK;
 
-    @ObjectHolder("pressdiagonallydotted")
+    @ObjectHolder( PressDiagonallyDotted.NAME )
     public static PressDiagonallyDotted PRESS_DIAGONALLYDOTTED;
 
-    @ObjectHolder("pressdotted")
+    @ObjectHolder( PressDotted.NAME )
     public static PressDotted PRESS_DOTTED;
 
-    @ObjectHolder("pressfancytiles")
+    @ObjectHolder( PressFancyTiles.NAME )
     public static PressFancyTiles PRESS_FANCYTILES;
 
-    @ObjectHolder("pressfloral")
+    @ObjectHolder( PressFloral.NAME )
     public static PressFloral PRESS_FLORAL;
 
-    @ObjectHolder("pressfrostedglass")
+    @ObjectHolder( PressFrostedGlass.NAME )
     public static PressFrostedGlass PRESS_FROSTEDGLASS;
 
-    @ObjectHolder("pressjewel")
+    @ObjectHolder( PressJewel.NAME )
     public static PressJewel PRESS_JEWEL;
 
-    @ObjectHolder("pressrippled")
+    @ObjectHolder( PressRippled.NAME )
     public static PressRippled PRESS_RIPPLED;
 
-    @ObjectHolder("pressstamp")
+    @ObjectHolder( PressStamp.NAME )
     public static PressStamp PRESS_STAMP;
 
-    @ObjectHolder("pressstonebrick")
+    @ObjectHolder( PressStoneBrick.NAME )
     public static PressStoneBrick PRESS_STONEBRICK;
 
-    @ObjectHolder("pressstonelamp")
+    @ObjectHolder( PressStoneLamp.NAME )
     public static PressStoneLamp PRESS_STONELAMP;
 
-    @ObjectHolder("pressstriped")
+    @ObjectHolder( PressStriped.NAME )
     public static PressStriped PRESS_STRIPED;
 
-    @ObjectHolder("presstexturedglass")
+    @ObjectHolder( PressTexturedGlass.NAME )
     public static PressTexturedGlass PRESS_TEXTUREDGLASS;
 
-    @ObjectHolder("presstintedglass")
+    @ObjectHolder( PressTintedGlass.NAME )
     public static PressTintedGlass PRESS_TINTEDGLASS;
 
-    @ObjectHolder("presswoodplank")
+    @ObjectHolder( PressWoodPlank.NAME )
     public static PressWoodPlank PRESS_WOODPLANK;
 
-    @ObjectHolder("presswool")
+    @ObjectHolder( PressWool.NAME )
     public static PressWool PRESS_WOOL;
 
     public static void register ( final RegistryEvent.Register<Item> event ) {
 
-        for ( String s : ModBlocks.BLOCKS.keySet() ) { //todo: Maybe sort these so they appear in the creative tab/tabs in some sane order
-            event.getRegistry().register( new BlockItem( ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s ) );
-        }
+        ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> event.getRegistry().register( new BlockItem( ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s ) ) );
 
         event.getRegistry().registerAll(
              new PressAuraLamp(),

@@ -5,14 +5,14 @@ import net.ommina.wallpapercraft.Wallpapercraft;
 
 public class PressBlank extends Item {
 
-    public static final String REG = "pressblank";
+    public static final String NAME = "pressblank";
 
     public PressBlank () {
         super( new Item.Properties()
              .maxStackSize( 1 )
              .group( Wallpapercraft.TAB ) );
 
-        setRegistryName( REG );
+        setRegistryName( NAME );
     }
 
 }

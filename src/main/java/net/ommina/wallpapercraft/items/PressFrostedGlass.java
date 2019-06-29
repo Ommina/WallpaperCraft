@@ -5,13 +5,15 @@ import net.ommina.wallpapercraft.Wallpapercraft;
 
 public class PressFrostedGlass extends Item {
 
+    public static final String NAME = "pressfrostedglass";
+
     public PressFrostedGlass () {
 
         super( new Item.Properties()
              .maxStackSize( 1 )
              .group( Wallpapercraft.TAB ) );
 
-        setRegistryName( "pressfrostedglass" );
+        setRegistryName( NAME );
 
     }
 

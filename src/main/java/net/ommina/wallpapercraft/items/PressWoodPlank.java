@@ -5,12 +5,14 @@ import net.ommina.wallpapercraft.Wallpapercraft;
 
 public class PressWoodPlank extends Item {
 
+    public static final String NAME = "presswoodplank";
+
     public PressWoodPlank () {
         super( new Item.Properties()
              .maxStackSize( 1 )
              .group( Wallpapercraft.TAB ) );
 
-        setRegistryName( "presswoodplank" );
+        setRegistryName( NAME );
 
     }
 

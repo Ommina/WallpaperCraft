@@ -5,12 +5,14 @@ import net.ommina.wallpapercraft.Wallpapercraft;
 
 public class PressStoneBrick extends Item {
 
+    public static final String NAME = "pressstonebrick";
+
     public PressStoneBrick () {
         super( new Item.Properties()
              .maxStackSize( 1 )
              .group( Wallpapercraft.TAB ) );
 
-        setRegistryName( "pressstonebrick" );
+        setRegistryName( NAME );
 
     }
 

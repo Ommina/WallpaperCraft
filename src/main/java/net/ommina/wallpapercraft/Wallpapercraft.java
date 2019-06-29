@@ -13,7 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod("wallpapercraft")
+@Mod( "wallpapercraft" )
 public class Wallpapercraft {
 
     // Directly reference a log4j logger.
@@ -21,18 +21,8 @@ public class Wallpapercraft {
     public static final ItemGroup TAB = new CreativeTab();
     public static final String MODID = "wallpapercraft";
 
-    public Wallpapercraft() {
-        // Register the setup method for modloading
-        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
-        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
-        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
+    public Wallpapercraft () {
+        MinecraftForge.EVENT_BUS.register( this );
     }
 
     /*
@@ -74,18 +64,18 @@ public class Wallpapercraft {
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.MOD )
     public static class RegistryEvents {
         @SubscribeEvent
-        public static void onBlocksRegistry( final RegistryEvent.Register<Block> event ) {
+        public static void onBlocksRegistry ( final RegistryEvent.Register<Block> event ) {
 
-            ModBlocks.register(event);
+            ModBlocks.register( event );
         }
 
         @SubscribeEvent
-        public static void onItemsRegistry( final RegistryEvent.Register<Item> event ) {
+        public static void onItemsRegistry ( final RegistryEvent.Register<Item> event ) {
 
-            ModItems.register(event);
+            ModItems.register( event );
 
         }
 

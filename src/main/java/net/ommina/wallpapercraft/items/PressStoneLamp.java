@@ -5,12 +5,14 @@ import net.ommina.wallpapercraft.Wallpapercraft;
 
 public class PressStoneLamp extends Item {
 
+    public static final String NAME = "pressstonelamp";
+
     public PressStoneLamp () {
         super( new Item.Properties()
              .maxStackSize( 1 )
              .group( Wallpapercraft.TAB ) );
 
-        setRegistryName( "pressstonelamp" );
+        setRegistryName( NAME );
 
     }
 
