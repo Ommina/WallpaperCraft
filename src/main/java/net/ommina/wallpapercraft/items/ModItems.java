@@ -7,8 +7,13 @@ import net.minecraftforge.registries.ObjectHolder;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @ObjectHolder( Wallpapercraft.MODID )
 public class ModItems {
+
+    public static Map<String, Item> ITEMS = new HashMap<String, Item>();
 
     @ObjectHolder( PressAuraLamp.NAME )
     public static PressAuraLamp PRESS_AURALAMP;
@@ -76,9 +81,13 @@ public class ModItems {
     @ObjectHolder( PressWool.NAME )
     public static PressWool PRESS_WOOL;
 
-    public static void register ( final RegistryEvent.Register<Item> event ) {
+    public static void register( final RegistryEvent.Register<Item> event ) {
 
-        ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> event.getRegistry().register( new BlockItem( ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s ) ) );
+        ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> {
+            Item item = new BlockItem( ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s );
+            event.getRegistry().register( item );
+            ITEMS.put( item.getRegistryName().getPath(), item );
+        } );
 
         event.getRegistry().registerAll(
              new PressAuraLamp(),
@@ -104,6 +113,12 @@ public class ModItems {
              new PressWoodPlank(),
              new PressWool()
         );
+    }
+
+    public static void AssignTags() {
+
+        //Wallpapercraft.TAG_SOLID.
+
     }
 
 }

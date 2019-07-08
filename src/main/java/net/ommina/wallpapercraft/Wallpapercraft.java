@@ -3,12 +3,18 @@ package net.ommina.wallpapercraft;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.IForgeRegistry;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.items.ModItems;
+import net.ommina.wallpapercraft.recipes.AuraLampCraftingRecipe;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,13 +22,24 @@ import org.apache.logging.log4j.Logger;
 @Mod( "wallpapercraft" )
 public class Wallpapercraft {
 
-    // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
     public static final ItemGroup TAB = new CreativeTab();
     public static final String MODID = "wallpapercraft";
 
+
+
+    //return new ItemTags.Wrapper(new ResourceLocation( SilentGems.MOD_ID, name ));
+
+    //(new Tag.Builder<Item>()).build( new ResourceLocation( MODID, "solid" ) );
+
     public Wallpapercraft () {
         MinecraftForge.EVENT_BUS.register( this );
+    }
+
+    public static ResourceLocation getId ( String path ) {
+
+        return new ResourceLocation( MODID, path );
+
     }
 
     /*
@@ -53,19 +70,28 @@ public class Wallpapercraft {
                 collect(Collectors.toList()));
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting( FMLServerStartingEvent event ) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
 
     */
+
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
     @Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.MOD )
     public static class RegistryEvents {
+
+
+        @SubscribeEvent
+        public static void registerSerials ( RegistryEvent.Register<IRecipeSerializer<?>> event ) {
+
+            final IForgeRegistry<IRecipeSerializer<?>> registry = event.getRegistry();
+
+            // Registry.register( Registry.RECIPE_TYPE, AuraLampCraftingRecipe.NAME, AuraLampCraftingRecipe.RECIPE_TYPE );
+
+            IRecipeSerializer.register( AuraLampCraftingRecipe.NAME.toString(), AuraLampCraftingRecipe.SERIALIZER );
+
+        }
+
+
         @SubscribeEvent
         public static void onBlocksRegistry ( final RegistryEvent.Register<Block> event ) {
 
@@ -78,6 +104,11 @@ public class Wallpapercraft {
             ModItems.register( event );
 
         }
+
+        //@SubscribeEvent
+        //public static void fish ( final RegistryEvent.Register<Recipe> event ) {
+
+        //}
 
     }
 

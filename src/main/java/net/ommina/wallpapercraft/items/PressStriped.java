@@ -14,6 +14,8 @@ public class PressStriped extends Item {
 
         setRegistryName( NAME );
 
+        this.getTags();
+
 
     }
 

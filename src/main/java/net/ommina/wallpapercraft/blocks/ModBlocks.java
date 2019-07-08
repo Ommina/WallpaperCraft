@@ -15,8 +15,8 @@ public class ModBlocks {
     public static void register ( final RegistryEvent.Register<Block> event ) {
 
         // Light Emitting
-        registerColouredBlocks( event, "auralamp", Material.ROCK, SoundType.STONE, true );
-        registerColouredBlocks( event, "stonelamp", Material.ROCK, SoundType.STONE, true );
+        registerColouredBlocks( event, "auralamp", Material.ROCK, SoundType.LANTERN, true );
+        registerColouredBlocks( event, "stonelamp", Material.ROCK, SoundType.LANTERN, true );
 
         // Pane in the Glass
         registerColouredBlocks( event, "frostedglass", Material.GLASS, SoundType.GLASS, false );
@@ -48,25 +48,23 @@ public class ModBlocks {
 
     }
 
-    private static void registerColouredBlocks ( final RegistryEvent.Register<Block> event, final String prefix, final Material material, final SoundType soundType, final boolean isLight ) {
+    private static void registerColouredBlocks ( final RegistryEvent.Register<Block> event, final String variant, final Material material, final SoundType soundType, final boolean isLight ) {
 
         final String[] colours = { "blue", "brown", "cyan", "gray", "green", "purple", "red", "yellow" };
 
         for ( String s : colours ) {
 
-            final int variantCount = s.equals( "cyan" ) ? 9 : 14;
+            final int suffixCount = s.equals( "cyan" ) ? 9 : 14;
 
-            for ( int variant = 0; variant <= variantCount; variant++ ) {
+            for ( int suffix = 0; suffix <= suffixCount; suffix++ ) {
 
-                final String name = prefix + s + "-" + variant;
-                final DecorativeBlock block = new DecorativeBlock( name, material, soundType, isLight ? 15 : 0 );
+                final DecorativeBlock block = new DecorativeBlock( variant, s, suffix, material, soundType, isLight ? 15 : 0 );
 
                 event.getRegistry().register( block );
 
-                BLOCKS.put( name, block );
+                BLOCKS.put( block.getName(), block );
             }
         }
-
 
     }
 
