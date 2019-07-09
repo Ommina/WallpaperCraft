@@ -1,19 +1,13 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
-import net.ommina.wallpapercraft.Wallpapercraft;
+public class PressRippled extends Press {
 
-public class PressRippled extends Item {
+    public static final String VARIANT = "rippled";
+    public static final String NAME = "press" + VARIANT;
 
-    public static final String NAME = "pressrippled";
-
-    public PressRippled () {
-        super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
-
+    public PressRippled() {
+        super( VARIANT );
         setRegistryName( NAME );
-
     }
 
 }

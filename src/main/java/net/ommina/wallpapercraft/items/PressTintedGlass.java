@@ -1,19 +1,13 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
-import net.ommina.wallpapercraft.Wallpapercraft;
+public class PressTintedGlass extends Press {
 
-public class PressTintedGlass extends Item {
+    public static final String VARIANT = "tintedglass";
+    public static final String NAME = "press" + VARIANT;
 
-    public static final String NAME = "presstintedglass";
-
-    public PressTintedGlass () {
-        super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
-
+    public PressTintedGlass() {
+        super( VARIANT );
         setRegistryName( NAME );
-
     }
 
 }

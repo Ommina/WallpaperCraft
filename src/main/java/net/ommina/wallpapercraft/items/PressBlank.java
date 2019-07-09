@@ -1,17 +1,12 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
-import net.ommina.wallpapercraft.Wallpapercraft;
+public class PressBlank extends Press {
 
-public class PressBlank extends Item {
+    public static final String VARIANT = "blank";
+    public static final String NAME = "press" + VARIANT;
 
-    public static final String NAME = "pressblank";
-
-    public PressBlank () {
-        super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
-
+    public PressBlank() {
+        super( VARIANT );
         setRegistryName( NAME );
     }
 

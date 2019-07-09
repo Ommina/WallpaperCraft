@@ -1,19 +1,13 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
-import net.ommina.wallpapercraft.Wallpapercraft;
+public class PressDotted extends Press {
 
-public class PressDotted extends Item {
+    public static final String VARIANT = "dotted";
+    public static final String NAME = "press" + VARIANT;
 
-    public static final String NAME = "pressdotted";
-
-    public PressDotted () {
-        super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
-
+    public PressDotted() {
+        super( VARIANT );
         setRegistryName( NAME );
-
     }
 
 }

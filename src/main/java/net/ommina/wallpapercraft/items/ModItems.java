@@ -25,7 +25,7 @@ public class ModItems {
     public static PressBrick PRESS_BRICK;
 
     @ObjectHolder( PressCheckered.NAME )
-    public static PressCheckered PRESS_CHECKERED;
+    public static PressCheckered PRESS_CHECKEREDWOOL;
 
     @ObjectHolder( PressClay.NAME )
     public static PressClay PRESS_CLAY;
@@ -113,12 +113,6 @@ public class ModItems {
              new PressWoodPlank(),
              new PressWool()
         );
-    }
-
-    public static void AssignTags() {
-
-        //Wallpapercraft.TAG_SOLID.
-
     }
 
 }

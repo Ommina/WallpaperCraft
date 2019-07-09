@@ -1,19 +1,13 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
-import net.ommina.wallpapercraft.Wallpapercraft;
+public class PressCheckered extends Press {
 
-public class PressCheckered extends Item {
+    public static final String VARIANT = "checkeredwool";
+    public static final String NAME = "press" + VARIANT;
 
-    public static final String NAME = "presscheckered";
-
-    public PressCheckered () {
-        super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
-
+    public PressCheckered() {
+        super( VARIANT );
         setRegistryName( NAME );
-
     }
 
 }

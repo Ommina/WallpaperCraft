@@ -4,14 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.IForgeRegistry;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.items.ModItems;
 import net.ommina.wallpapercraft.recipes.AuraLampCraftingRecipe;
@@ -26,21 +23,18 @@ public class Wallpapercraft {
     public static final ItemGroup TAB = new CreativeTab();
     public static final String MODID = "wallpapercraft";
 
-
-
-    //return new ItemTags.Wrapper(new ResourceLocation( SilentGems.MOD_ID, name ));
-
-    //(new Tag.Builder<Item>()).build( new ResourceLocation( MODID, "solid" ) );
-
-    public Wallpapercraft () {
+    public Wallpapercraft() {
         MinecraftForge.EVENT_BUS.register( this );
     }
 
-    public static ResourceLocation getId ( String path ) {
+    public static ResourceLocation getId( String path ) {
 
         return new ResourceLocation( MODID, path );
 
     }
+
+    //TODO: 'Jewel', 'Stamp' lack colour variants, and will need their own recipe handing
+    //TODO: Glass blocks are not transparent
 
     /*
 
@@ -79,36 +73,25 @@ public class Wallpapercraft {
     @Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.MOD )
     public static class RegistryEvents {
 
-
         @SubscribeEvent
-        public static void registerSerials ( RegistryEvent.Register<IRecipeSerializer<?>> event ) {
-
-            final IForgeRegistry<IRecipeSerializer<?>> registry = event.getRegistry();
-
-            // Registry.register( Registry.RECIPE_TYPE, AuraLampCraftingRecipe.NAME, AuraLampCraftingRecipe.RECIPE_TYPE );
+        public static void registerSerials( RegistryEvent.Register<IRecipeSerializer<?>> event ) {
 
             IRecipeSerializer.register( AuraLampCraftingRecipe.NAME.toString(), AuraLampCraftingRecipe.SERIALIZER );
 
         }
 
-
         @SubscribeEvent
-        public static void onBlocksRegistry ( final RegistryEvent.Register<Block> event ) {
+        public static void onBlocksRegistry( final RegistryEvent.Register<Block> event ) {
 
             ModBlocks.register( event );
         }
 
         @SubscribeEvent
-        public static void onItemsRegistry ( final RegistryEvent.Register<Item> event ) {
+        public static void onItemsRegistry( final RegistryEvent.Register<Item> event ) {
 
             ModItems.register( event );
 
         }
-
-        //@SubscribeEvent
-        //public static void fish ( final RegistryEvent.Register<Recipe> event ) {
-
-        //}
 
     }
 

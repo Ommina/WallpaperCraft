@@ -1,16 +1,12 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
-import net.ommina.wallpapercraft.Wallpapercraft;
+public class PressAuraLamp extends Press {
 
-public class PressAuraLamp extends Item {
+    public static final String VARIANT = "auralamp";
+    public static final String NAME = "press" + VARIANT;
 
-    public static final String NAME = "pressauralamp";
-
-    public PressAuraLamp () {
-        super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
+    public PressAuraLamp() {
+        super( VARIANT );
 
         setRegistryName( NAME );
     }

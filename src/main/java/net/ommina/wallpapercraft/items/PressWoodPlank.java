@@ -1,19 +1,13 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
-import net.ommina.wallpapercraft.Wallpapercraft;
+public class PressWoodPlank extends Press {
 
-public class PressWoodPlank extends Item {
+    public static final String VARIANT = "woodplank";
+    public static final String NAME = "press" + VARIANT;
 
-    public static final String NAME = "presswoodplank";
-
-    public PressWoodPlank () {
-        super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
-
+    public PressWoodPlank() {
+        super( VARIANT );
         setRegistryName( NAME );
-
     }
 
 }

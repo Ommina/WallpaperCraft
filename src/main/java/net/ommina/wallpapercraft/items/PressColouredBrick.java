@@ -1,17 +1,12 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
-import net.ommina.wallpapercraft.Wallpapercraft;
+public class PressColouredBrick extends Press {
 
-public class PressColouredBrick extends Item {
+    public static final String VARIANT = "colouredbrick";
+    public static final String NAME = "press" + VARIANT;
 
-    public static final String NAME = "presscolouredbrick";
-
-    public PressColouredBrick () {
-        super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
-
+    public PressColouredBrick() {
+        super( VARIANT );
         setRegistryName( NAME );
 
     }
