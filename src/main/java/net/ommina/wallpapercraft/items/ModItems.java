@@ -1,6 +1,5 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ObjectHolder;
@@ -24,8 +23,8 @@ public class ModItems {
     @ObjectHolder( PressBrick.NAME )
     public static PressBrick PRESS_BRICK;
 
-    @ObjectHolder( PressCheckered.NAME )
-    public static PressCheckered PRESS_CHECKEREDWOOL;
+    @ObjectHolder( PressCheckeredWool.NAME )
+    public static PressCheckeredWool PRESS_CHECKEREDWOOL;
 
     @ObjectHolder( PressClay.NAME )
     public static PressClay PRESS_CLAY;
@@ -84,7 +83,7 @@ public class ModItems {
     public static void register( final RegistryEvent.Register<Item> event ) {
 
         ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> {
-            Item item = new BlockItem( ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s );
+            final Item item = new DecorativeItem( ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s );
             event.getRegistry().register( item );
             ITEMS.put( item.getRegistryName().getPath(), item );
         } );
@@ -93,7 +92,7 @@ public class ModItems {
              new PressAuraLamp(),
              new PressBlank(),
              new PressBrick(),
-             new PressCheckered(),
+             new PressCheckeredWool(),
              new PressClay(),
              new PressColouredBrick(),
              new PressDamask(),

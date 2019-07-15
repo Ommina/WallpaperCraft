@@ -8,10 +8,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
+import net.ommina.wallpapercraft.client.ClientProxy;
 import net.ommina.wallpapercraft.items.ModItems;
-import net.ommina.wallpapercraft.recipes.AuraLampCraftingRecipe;
+import net.ommina.wallpapercraft.recipes.PressCraftingRecipe;
+import net.ommina.wallpapercraft.server.ServerProxy;
+import net.ommina.wallpapercraft.util.Proxy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,12 +23,16 @@ import org.apache.logging.log4j.Logger;
 @Mod( "wallpapercraft" )
 public class Wallpapercraft {
 
+    public static final Proxy PROXY = DistExecutor.runForDist( () -> ClientProxy::new, () -> ServerProxy::new );
     public static final Logger LOGGER = LogManager.getLogger();
-    public static final ItemGroup TAB = new CreativeTab();
     public static final String MODID = "wallpapercraft";
+
+    public static final ItemGroup TAB = new CreativeTab();
+
 
     public Wallpapercraft() {
         MinecraftForge.EVENT_BUS.register( this );
+        //FMLJavaModLoadingContext.get().getModEventBus().addListener( this::clientSetupEvent );
     }
 
     public static ResourceLocation getId( String path ) {
@@ -36,17 +44,18 @@ public class Wallpapercraft {
     //TODO: 'Jewel', 'Stamp' lack colour variants, and will need their own recipe handing
     //TODO: Glass blocks are not transparent
 
+    //private void clientSetupEvent( final FMLClientSetupEvent event ) {
+
+    //    MouseScrollHandler.init();
+
+    //}
+
     /*
 
     private void setup( final FMLCommonSetupEvent event ) {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-    }
-
-    private void doClientStuff( final FMLClientSetupEvent event ) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
 
     private void enqueueIMC( final InterModEnqueueEvent event ) {
@@ -76,7 +85,7 @@ public class Wallpapercraft {
         @SubscribeEvent
         public static void registerSerials( RegistryEvent.Register<IRecipeSerializer<?>> event ) {
 
-            IRecipeSerializer.register( AuraLampCraftingRecipe.NAME.toString(), AuraLampCraftingRecipe.SERIALIZER );
+            IRecipeSerializer.register( PressCraftingRecipe.NAME.toString(), PressCraftingRecipe.SERIALIZER );
 
         }
 

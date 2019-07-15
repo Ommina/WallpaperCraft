@@ -1,11 +1,11 @@
 package net.ommina.wallpapercraft.items;
 
-public class PressCheckered extends Press {
+public class PressCheckeredWool extends Press {
 
     public static final String VARIANT = "checkeredwool";
     public static final String NAME = "press" + VARIANT;
 
-    public PressCheckered() {
+    public PressCheckeredWool() {
         super( VARIANT );
         setRegistryName( NAME );
     }

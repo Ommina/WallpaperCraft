@@ -24,14 +24,7 @@ import net.ommina.wallpapercraft.tags.Tags;
 
 import javax.annotation.Nonnull;
 
-public class AuraLampCraftingRecipe implements ICraftingRecipe {
-
-    //public static final IRecipeType<AuraLampCraftingRecipe> RECIPE_TYPE = new IRecipeType<AuraLampCraftingRecipe>() {
-    //    @Override
-    //    public String toString() {
-    //        return Wallpapercraft.getId( "auralampcrafting" ).toString();
-    //    }
-    //};
+public class PressCraftingRecipe implements ICraftingRecipe {
 
     public static final ResourceLocation NAME = Wallpapercraft.getId( "presscrafting" );
     public static final Serializer SERIALIZER = new Serializer();
@@ -41,7 +34,7 @@ public class AuraLampCraftingRecipe implements ICraftingRecipe {
     private Tag<Item> tags;
     private boolean valid = true;
 
-    public AuraLampCraftingRecipe( ResourceLocation id ) {
+    public PressCraftingRecipe( ResourceLocation id ) {
         this.id = id;
     }
 
@@ -168,7 +161,7 @@ public class AuraLampCraftingRecipe implements ICraftingRecipe {
         return SERIALIZER;
     }
 
-    public static final class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<AuraLampCraftingRecipe> {
+    public static final class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<PressCraftingRecipe> {
 
         private Serializer() {
 
@@ -176,9 +169,9 @@ public class AuraLampCraftingRecipe implements ICraftingRecipe {
 
         @Nonnull
         @Override
-        public AuraLampCraftingRecipe read( @Nonnull final ResourceLocation recipeId, @Nonnull final JsonObject json ) {
+        public PressCraftingRecipe read( @Nonnull final ResourceLocation recipeId, @Nonnull final JsonObject json ) {
 
-            final AuraLampCraftingRecipe recipe = new AuraLampCraftingRecipe( recipeId );
+            final PressCraftingRecipe recipe = new PressCraftingRecipe( recipeId );
 
 
             final Item press = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( JSONUtils.getString( json, "press", PressBlank.NAME ) ) );
@@ -201,12 +194,12 @@ public class AuraLampCraftingRecipe implements ICraftingRecipe {
         }
 
         @Override
-        public AuraLampCraftingRecipe read( final ResourceLocation recipeId, final PacketBuffer buffer ) {
-            return new AuraLampCraftingRecipe( recipeId );
+        public PressCraftingRecipe read( final ResourceLocation recipeId, final PacketBuffer buffer ) {
+            return new PressCraftingRecipe( recipeId );
         }
 
         @Override
-        public void write( PacketBuffer buffer, AuraLampCraftingRecipe recipe ) {
+        public void write( PacketBuffer buffer, PressCraftingRecipe recipe ) {
         }
 
     }
