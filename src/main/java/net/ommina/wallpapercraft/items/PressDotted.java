@@ -1,6 +1,6 @@
 package net.ommina.wallpapercraft.items;
 
-public class PressDotted extends Press {
+public class PressDotted extends PressPattern {
 
     public static final String VARIANT = "dotted";
     public static final String NAME = "press" + VARIANT;

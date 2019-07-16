@@ -1,6 +1,6 @@
 package net.ommina.wallpapercraft.items;
 
-public class PressAuraLamp extends Press {
+public class PressAuraLamp extends PressPattern {
 
     public static final String VARIANT = "auralamp";
     public static final String NAME = "press" + VARIANT;

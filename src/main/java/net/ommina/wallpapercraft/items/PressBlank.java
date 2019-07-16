@@ -1,8 +1,8 @@
 package net.ommina.wallpapercraft.items;
 
-public class PressBlank extends Press {
+public class PressBlank extends PressPattern {
 
-    public static final String VARIANT = "blank";
+    public static final String VARIANT = "solid";
     public static final String NAME = "press" + VARIANT;
 
     public PressBlank() {

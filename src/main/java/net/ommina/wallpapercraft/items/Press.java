@@ -13,7 +13,6 @@ public abstract class Press extends Item {
              .group( Wallpapercraft.TAB ) );
 
         this.variant = variant;
-
     }
 
     public String getVariant() {

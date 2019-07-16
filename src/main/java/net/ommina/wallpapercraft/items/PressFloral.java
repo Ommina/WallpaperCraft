@@ -1,6 +1,6 @@
 package net.ommina.wallpapercraft.items;
 
-public class PressFloral extends Press {
+public class PressFloral extends PressPattern {
 
     public static final String VARIANT = "floral";
     public static final String NAME = "press" + VARIANT;

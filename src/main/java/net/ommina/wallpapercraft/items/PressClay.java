@@ -1,6 +1,6 @@
 package net.ommina.wallpapercraft.items;
 
-public class PressClay extends Press {
+public class PressClay extends PressPattern {
 
     public static final String VARIANT = "clay";
     public static final String NAME = "press" + VARIANT;

@@ -16,10 +16,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.DecorativeBlock;
+import net.ommina.wallpapercraft.blocks.DecorativeBlockPatterned;
+import net.ommina.wallpapercraft.blocks.DecorativeBlockSolid;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
-import net.ommina.wallpapercraft.items.ModItems;
-import net.ommina.wallpapercraft.items.Press;
-import net.ommina.wallpapercraft.items.PressBlank;
+import net.ommina.wallpapercraft.items.*;
 import net.ommina.wallpapercraft.tags.Tags;
 
 import javax.annotation.Nonnull;
@@ -54,7 +54,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
                     i++;
                 } else {
 
-                    if( !this.tags.contains( stack.getItem() ) ) {
+                    if( !(stack.getItem() instanceof DecorativeItem) ) {
                         return false;
                     }
 
@@ -80,14 +80,25 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             final ItemStack stack = inv.getStackInSlot( i );
 
-            if( !stack.isEmpty() && this.tags.contains( stack.getItem() ) ) {
+            if( !stack.isEmpty() && !(stack.getItem() instanceof Press) ) { //&& this.tags.contains( stack.getItem() ) ) {
 
                 final DecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
 
                 if( block == null )
                     return ItemStack.EMPTY;
 
-                final Item item = ModItems.ITEMS.get( this.press.getVariant() + block.getColour() + block.getSuffix() );
+                Item item = null;
+
+                if( (this.press instanceof PressPattern && block instanceof DecorativeBlockSolid) ||
+                     (this.press == ModItems.PRESS_SOLID && block instanceof DecorativeBlockPatterned) ) {
+
+                    item = ModItems.ITEMS.get( this.press.getVariant() + block.getColour() + block.getSuffix() );
+
+                } else if( this.press instanceof PressColour ) {
+
+                    item = ModItems.ITEMS.get( block.getVariant() + this.press.getVariant() + block.getSuffix() );
+
+                }
 
                 if( item == null )
                     return ItemStack.EMPTY;

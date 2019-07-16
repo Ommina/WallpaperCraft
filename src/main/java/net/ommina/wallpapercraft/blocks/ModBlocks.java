@@ -12,7 +12,7 @@ public class ModBlocks {
 
     public static final Map<String, DecorativeBlock> BLOCKS = new HashMap<String, DecorativeBlock>();
 
-    public static void register ( final RegistryEvent.Register<Block> event ) {
+    public static void register( final RegistryEvent.Register<Block> event ) {
 
         // Light Emitting
         registerColouredBlocks( event, "auralamp", Material.ROCK, SoundType.LANTERN, true );
@@ -48,17 +48,23 @@ public class ModBlocks {
 
     }
 
-    private static void registerColouredBlocks ( final RegistryEvent.Register<Block> event, final String variant, final Material material, final SoundType soundType, final boolean isLight ) {
+    private static void registerColouredBlocks( final RegistryEvent.Register<Block> event, final String variant, final Material material, final SoundType soundType, final boolean isLight ) {
 
         final String[] colours = { "blue", "brown", "cyan", "gray", "green", "purple", "red", "yellow" };
 
-        for ( String s : colours ) {
+        for( String s : colours ) {
 
             final int suffixCount = s.equals( "cyan" ) ? 9 : 14;
 
-            for ( int suffix = 0; suffix <= suffixCount; suffix++ ) {
+            for( int suffix = 0; suffix <= suffixCount; suffix++ ) {
 
-                final DecorativeBlock block = new DecorativeBlock( variant, s, suffix, material, soundType, isLight ? 15 : 0 );
+                final DecorativeBlock block;
+                final int light = isLight ? 15 : 0;
+
+                if( variant.equals( "solid" ) )
+                    block = new DecorativeBlockSolid( variant, s, suffix, material, soundType, light );
+                else
+                    block = new DecorativeBlockPatterned( variant, s, suffix, material, soundType, light );
 
                 event.getRegistry().register( block );
 

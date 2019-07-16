@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
-public class DecorativeBlock extends Block {
+public abstract class DecorativeBlock extends Block {
 
     private final String variant;
     private final String colour;
