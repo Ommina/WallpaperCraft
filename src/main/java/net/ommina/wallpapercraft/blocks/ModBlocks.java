@@ -63,6 +63,8 @@ public class ModBlocks {
 
                 if( variant.equals( "solid" ) )
                     block = new DecorativeBlockSolid( variant, s, suffix, material, soundType, light );
+                else if( material == Material.GLASS )
+                    block = new DecorativeBlockGlass( variant, s, suffix, material, soundType, light );
                 else
                     block = new DecorativeBlockPatterned( variant, s, suffix, material, soundType, light );
 

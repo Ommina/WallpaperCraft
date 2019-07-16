@@ -42,7 +42,6 @@ public class Wallpapercraft {
     }
 
     //TODO: 'Jewel', 'Stamp' lack colour variants, and will need their own recipe handing
-    //TODO: Glass blocks are not transparent
 
     //private void clientSetupEvent( final FMLClientSetupEvent event ) {
 
