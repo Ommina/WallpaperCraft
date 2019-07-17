@@ -1,6 +1,4 @@
 {
   "type": "wallpapercraft:presscrafting",
-  "press": "presscolouredbrick",
-  "tag": "solid",
-  "negatetag": "false"
+  "press": "presscolouredbrick"
 }
