@@ -104,6 +104,10 @@ public class ModItems {
     @ObjectHolder( PressYellow.NAME )
     public static PressYellow PRESS_YELLOW;
 
+    //@ObjectHolder( PressVariant1.NAME )
+    //public static PressVariant1 PRESS_VARIANT1;
+
+
     public static void register( final RegistryEvent.Register<Item> event ) {
 
         ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> {
@@ -111,6 +115,12 @@ public class ModItems {
             event.getRegistry().register( item );
             ITEMS.put( item.getRegistryName().getPath(), item );
         } );
+
+        for( int i = 0; i <= 14; i++ ) {
+            final Item item = new PressVariant( Integer.toString( i ) );
+            event.getRegistry().register( item );
+            ITEMS.put( item.getRegistryName().getPath(), item );
+        }
 
         event.getRegistry().registerAll(
              new PressBlank(),
@@ -147,6 +157,10 @@ public class ModItems {
              new PressRed(),
              new PressYellow()
         );
+
+        //event.getRegistry().registerAll(
+        //     new PressVariant1()
+        //);
 
     }
 

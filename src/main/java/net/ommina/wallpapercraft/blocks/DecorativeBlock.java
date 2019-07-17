@@ -6,11 +6,11 @@ import net.minecraft.block.material.Material;
 
 public abstract class DecorativeBlock extends Block {
 
-    private final String variant;
+    private final String pattern;
     private final String colour;
     private final String suffix;
 
-    public DecorativeBlock( final String variant, final String colour, final int suffix, final Material material, final SoundType soundType, final int light ) {
+    public DecorativeBlock( final String pattern, final String colour, final int suffix, final Material material, final SoundType soundType, final int light ) {
 
         super( Properties.create( material )
              .sound( soundType )
@@ -19,7 +19,7 @@ public abstract class DecorativeBlock extends Block {
 
         );
 
-        this.variant = variant;
+        this.pattern = pattern;
         this.colour = colour;
         this.suffix = "-" + suffix;
 
@@ -28,11 +28,11 @@ public abstract class DecorativeBlock extends Block {
     }
 
     public String getName() {
-        return this.variant + this.colour + this.suffix;
+        return this.pattern + this.colour + this.suffix;
     }
 
-    public String getVariant() {
-        return this.variant;
+    public String getPattern() {
+        return this.pattern;
     }
 
     public String getColour() {

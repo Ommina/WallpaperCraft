@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.ICraftingRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.tags.Tag;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +19,6 @@ import net.ommina.wallpapercraft.blocks.DecorativeBlockPatterned;
 import net.ommina.wallpapercraft.blocks.DecorativeBlockSolid;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.items.*;
-import net.ommina.wallpapercraft.tags.Tags;
 
 import javax.annotation.Nonnull;
 
@@ -31,7 +29,6 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
     private ResourceLocation id;
     private Press press;
-    private Tag<Item> tags;
     private boolean valid = true;
 
     public PressCraftingRecipe( ResourceLocation id ) {
@@ -80,7 +77,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             final ItemStack stack = inv.getStackInSlot( i );
 
-            if( !stack.isEmpty() && !(stack.getItem() instanceof Press) ) { //&& this.tags.contains( stack.getItem() ) ) {
+            if( !stack.isEmpty() && !(stack.getItem() instanceof Press) ) {
 
                 final DecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
 
@@ -96,7 +93,11 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
                 } else if( this.press instanceof PressColour ) {
 
-                    item = ModItems.ITEMS.get( block.getVariant() + this.press.getVariant() + block.getSuffix() );
+                    item = ModItems.ITEMS.get( block.getPattern() + this.press.getVariant() + block.getSuffix() );
+
+                } else if( this.press instanceof PressVariant ) {
+
+                    item = ModItems.ITEMS.get( block.getPattern() + block.getColour() + this.press.getVariant() );
 
                 }
 
@@ -189,16 +190,6 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             if( press instanceof Press )
                 recipe.press = (Press) press;
-            else
-                recipe.valid = false;
-
-
-            final Tag<Item> tags = Tags.TAGS.get( JSONUtils.getString( json, "tag", "solid" ) );
-
-            if( tags != null )
-                recipe.tags = tags;
-            else
-                recipe.valid = false;
 
             return recipe;
 
