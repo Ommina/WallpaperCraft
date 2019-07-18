@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class ModBlocks {
 
+    public static final String[] COLOURS = { "blue", "brown", "cyan", "gray", "green", "purple", "red", "yellow" };
     public static final Map<String, DecorativeBlock> BLOCKS = new HashMap<String, DecorativeBlock>();
 
     public static void register( final RegistryEvent.Register<Block> event ) {
@@ -50,9 +51,7 @@ public class ModBlocks {
 
     private static void registerColouredBlocks( final RegistryEvent.Register<Block> event, final String variant, final Material material, final SoundType soundType, final boolean isLight ) {
 
-        final String[] colours = { "blue", "brown", "cyan", "gray", "green", "purple", "red", "yellow" };
-
-        for( String s : colours ) {
+        for( String s : COLOURS ) {
 
             final int suffixCount = s.equals( "cyan" ) ? 9 : 14;
 

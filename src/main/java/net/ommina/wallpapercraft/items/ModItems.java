@@ -80,34 +80,6 @@ public class ModItems {
     @ObjectHolder( PressWool.NAME )
     public static PressWool PRESS_WOOL;
 
-    @ObjectHolder( PressBlue.NAME )
-    public static PressBlue PRESS_BLUE;
-
-    @ObjectHolder( PressBrown.NAME )
-    public static PressBrown PRESS_BROWN;
-
-    @ObjectHolder( PressCyan.NAME )
-    public static PressRed PRESS_CYAN;
-
-    @ObjectHolder( PressGray.NAME )
-    public static PressGray PRESS_GRAY;
-
-    @ObjectHolder( PressGreen.NAME )
-    public static PressGreen PRESS_GREEN;
-
-    @ObjectHolder( PressPurple.NAME )
-    public static PressPurple PRESS_PURPLE;
-
-    @ObjectHolder( PressRed.NAME )
-    public static PressRed PRESS_RED;
-
-    @ObjectHolder( PressYellow.NAME )
-    public static PressYellow PRESS_YELLOW;
-
-    //@ObjectHolder( PressVariant1.NAME )
-    //public static PressVariant1 PRESS_VARIANT1;
-
-
     public static void register( final RegistryEvent.Register<Item> event ) {
 
         ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> {
@@ -115,6 +87,12 @@ public class ModItems {
             event.getRegistry().register( item );
             ITEMS.put( item.getRegistryName().getPath(), item );
         } );
+
+        for( String s : ModBlocks.COLOURS ) {
+            final Item item = new PressColour( s );
+            event.getRegistry().register( item );
+            ITEMS.put( item.getRegistryName().getPath(), item );
+        }
 
         for( int i = 0; i <= 14; i++ ) {
             final Item item = new PressVariant( Integer.toString( i ) );
@@ -146,21 +124,6 @@ public class ModItems {
              new PressWoodPlank(),
              new PressWool()
         );
-
-        event.getRegistry().registerAll(
-             new PressBlue(),
-             new PressBrown(),
-             new PressCyan(),
-             new PressGray(),
-             new PressGreen(),
-             new PressPurple(),
-             new PressRed(),
-             new PressYellow()
-        );
-
-        //event.getRegistry().registerAll(
-        //     new PressVariant1()
-        //);
 
     }
 
