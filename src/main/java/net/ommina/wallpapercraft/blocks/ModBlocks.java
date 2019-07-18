@@ -11,6 +11,10 @@ import java.util.Map;
 public class ModBlocks {
 
     public static final String[] COLOURS = { "blue", "brown", "cyan", "gray", "green", "purple", "red", "yellow" };
+    public static final String[] PATTERNS = { "auralamp", "solid", "brick", "checkeredwool", "clay", "colouredbrick",
+         "damask", "diagonallydotted", "dotted", "fancytiles", "floral", "frostedglass",
+         "jewel", "rippled", "stamp", "stonebrick", "stonelamp", "striped", "texturedglass", "tintedglass", "woodplank", "wool" };
+
     public static final Map<String, DecorativeBlock> BLOCKS = new HashMap<String, DecorativeBlock>();
 
     public static void register( final RegistryEvent.Register<Block> event ) {

@@ -15,8 +15,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.DecorativeBlock;
-import net.ommina.wallpapercraft.blocks.DecorativeBlockPatterned;
-import net.ommina.wallpapercraft.blocks.DecorativeBlockSolid;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.items.*;
 
@@ -86,8 +84,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
                 Item item = null;
 
-                if( (this.press instanceof PressPattern && block instanceof DecorativeBlockSolid) ||
-                     (this.press == ModItems.PRESS_SOLID && block instanceof DecorativeBlockPatterned) ) {
+                if( this.press instanceof PressPattern ) {
 
                     item = ModItems.ITEMS.get( this.press.getVariant() + block.getColour() + block.getSuffix() );
 
@@ -186,7 +183,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
             final PressCraftingRecipe recipe = new PressCraftingRecipe( recipeId );
 
 
-            final Item press = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( JSONUtils.getString( json, "press", PressBlank.NAME ) ) );
+            final Item press = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( JSONUtils.getString( json, "press", "missing" ) ) );
 
             if( press instanceof Press )
                 recipe.press = (Press) press;

@@ -1,9 +1,12 @@
 package net.ommina.wallpapercraft.items;
 
-public abstract class PressPattern extends Press {
+public class PressPattern extends Press {
 
-    public PressPattern( final String variant ) {
-        super( variant );
+    public PressPattern( final String pattern ) {
+        super( pattern );
+
+        setRegistryName( "press" + pattern );
+
     }
 
 }
