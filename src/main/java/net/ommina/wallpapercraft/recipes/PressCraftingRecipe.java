@@ -86,15 +86,15 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
                 if( this.press instanceof PressPattern ) {
 
-                    item = ModItems.ITEMS.get( this.press.getVariant() + block.getColour() + block.getSuffix() );
+                    item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( this.press.getVariant() + block.getColour() + block.getSuffix() ) );
 
                 } else if( this.press instanceof PressColour ) {
 
-                    item = ModItems.ITEMS.get( block.getPattern() + this.press.getVariant() + block.getSuffix() );
+                    item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( block.getPattern() + this.press.getVariant() + block.getSuffix() ) );
 
                 } else if( this.press instanceof PressVariant ) {
 
-                    item = ModItems.ITEMS.get( block.getPattern() + block.getColour() + this.press.getVariant() );
+                    item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( block.getPattern() + block.getColour() + this.press.getVariant() ) );
 
                 }
 

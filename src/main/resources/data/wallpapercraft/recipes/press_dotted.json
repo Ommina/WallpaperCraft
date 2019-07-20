@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "   ",
+    "mb ",
+    "   "
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:melon_seeds"
+    },
+    "b": {
+      "item": "wallpapercraft:pressblank"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:pressdotted",
+    "count": 1
+  }
+}

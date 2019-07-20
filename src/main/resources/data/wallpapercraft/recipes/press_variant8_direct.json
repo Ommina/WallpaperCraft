@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wallpapercraft",
+  "ingredients": [
+    {
+      "item": "wallpapercraft:pressvariant7"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "item": "wallpapercraft:pressvariant8",
+    "count": 1
+  }
+}

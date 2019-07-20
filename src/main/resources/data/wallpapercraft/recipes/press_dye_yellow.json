@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wallpapercraft",
+  "ingredients": [
+    {
+      "item": "wallpapercraft:pressblank"
+    },
+    {
+      "tag": "forge:dyes/yellow"
+    }
+  ],
+  "result": {
+    "item": "wallpapercraft:pressyellow",
+    "count": 1
+  }
+}

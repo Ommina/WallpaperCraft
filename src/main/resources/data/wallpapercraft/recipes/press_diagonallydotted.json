@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "   ",
+    "mb ",
+    "   "
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:bamboo"
+    },
+    "b": {
+      "item": "wallpapercraft:pressblank"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:pressdiagonallydotted",
+    "count": 1
+  }
+}

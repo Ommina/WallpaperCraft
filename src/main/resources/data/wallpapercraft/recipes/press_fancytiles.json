@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "   ",
+    "mb ",
+    "   "
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:stone_brick_slab"
+    },
+    "b": {
+      "item": "wallpapercraft:pressblank"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:pressfancytiles",
+    "count": 1
+  }
+}

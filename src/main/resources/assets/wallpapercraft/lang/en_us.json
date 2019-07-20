@@ -1,5 +1,6 @@
 {
-  "itemGroup.wallpapercraft": "wallpapercraft",
+  "itemGroup.wallpapercraft": "WallpaperCraft",
+
   "item.wallpapercraft.pressvariant0": "Press: Variant 1",
   "item.wallpapercraft.pressvariant1": "Press: Variant 2",
   "item.wallpapercraft.pressvariant2": "Press: Variant 3",

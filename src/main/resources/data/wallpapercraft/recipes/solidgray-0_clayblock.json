@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    " c ",
+    "csc",
+    " c "
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:clay"
+    },
+    "s": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:solidgray-0",
+    "count": 32
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "   ",
+    "mbd",
+    "   "
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:bricks"
+    },
+    "b": {
+      "item": "wallpapercraft:pressblank"
+    },
+    "d": {
+      "tag": "forge:dyes"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:presscolouredbrick",
+    "count": 1
+  }
+}

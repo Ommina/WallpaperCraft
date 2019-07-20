@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "   ",
+    "mbd",
+    "   "
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:glass"
+    },
+    "b": {
+      "item": "wallpapercraft:pressblank"
+    },
+    "d": {
+      "tag": "minecraft:sand"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:pressfrostedglass",
+    "count": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "   ",
+    "mbd",
+    "   "
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:glass"
+    },
+    "b": {
+      "item": "wallpapercraft:pressblank"
+    },
+    "d": {
+      "tag": "forge:dyes"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:presstintedglass",
+    "count": 1
+  }
+}
