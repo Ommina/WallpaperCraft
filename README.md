@@ -17,10 +17,10 @@ The 1.14.2 version is a complete rewrite, using no code from the earlier version
 
 ## Downloads
 
-1.7.10 and 1.10.2 versions can be found on [CurseForge](https://minecraft.curseforge.com/projects/wallpapercraft)
-1.14.2 version can be found on [CurseForge](https://minecraft.curseforge.com/projects/wallpapercraft_ommina)
+1.7.10 and 1.10.2 versions can be found on [CurseForge - Wallpapercraft](https://minecraft.curseforge.com/projects/wallpapercraft)
+1.14.2 version can be found on [CurseForge - Wallpapercraft: A Fresh Roll](https://www.curseforge.com/minecraft/mc-mods/wallpapercraft-a-fresh-roll)
 
 ## Issues
 
-Found a bug with the 1.14.2 version?  Let me know in as much detail as possible on the [Issue Tracker](https://github.com/Ommina/WallpaperCraft/issues)
+Found a bug with the 1.14.3 version?  Let me know in as much detail as possible on the [Issue Tracker](https://github.com/Ommina/WallpaperCraft/issues)
 # WallpaperCraft
