@@ -45,7 +45,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             if( !stack.isEmpty() ) {
 
-                if( stack.getItem() == this.press ) {
+                if( stack.getItem() instanceof Press ) {
                     i++;
                 } else {
 
@@ -57,57 +57,85 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
                 }
 
-                if( j > 1 || i > 1 ) {
+                if( j > 1 || i > 3 ) {
                     return false;
                 }
 
             }
         }
 
-        return i == 1 && j == 1;
+        return i <= 3 && j == 1;
     }
 
     @Override
     @Nonnull
     public ItemStack getCraftingResult( @Nonnull final CraftingInventory inv ) {
 
+        String pattern = "";
+        String colour = "";
+        String suffix = "";
+
+        boolean hasChanged = false;
+
         for( int i = 0; i < inv.getSizeInventory(); i++ ) {
 
             final ItemStack stack = inv.getStackInSlot( i );
 
-            if( !stack.isEmpty() && !(stack.getItem() instanceof Press) ) {
+            if( !stack.isEmpty() && stack.getItem() instanceof DecorativeItem ) {
 
                 final DecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
 
                 if( block == null )
                     return ItemStack.EMPTY;
 
-                Item item = null;
+                pattern = block.getPattern();
+                colour = block.getColour();
+                suffix = block.getSuffix();
 
-                if( this.press instanceof PressPattern ) {
-
-                    item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( this.press.getVariant() + block.getColour() + block.getSuffix() ) );
-
-                } else if( this.press instanceof PressColour ) {
-
-                    item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( block.getPattern() + this.press.getVariant() + block.getSuffix() ) );
-
-                } else if( this.press instanceof PressVariant ) {
-
-                    item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( block.getPattern() + block.getColour() + this.press.getVariant() ) );
-
-                }
-
-                if( item == null )
-                    return ItemStack.EMPTY;
-
-                return new ItemStack( item );
+                break;
 
             }
 
         }
 
-        return ItemStack.EMPTY;
+        for( int i = 0; i < inv.getSizeInventory(); i++ ) {
+
+            final ItemStack stack = inv.getStackInSlot( i );
+
+            if( !stack.isEmpty() && stack.getItem() instanceof Press ) {
+
+                Press press = (Press) stack.getItem();
+
+                if( press instanceof PressPattern ) {
+
+                    pattern = press.getVariant();
+                    hasChanged = true;
+
+                } else if( press instanceof PressColour ) {
+
+                    colour = press.getVariant();
+                    hasChanged = true;
+
+                } else if( press instanceof PressVariant ) {
+
+                    suffix = press.getVariant();
+                    hasChanged = true;
+
+                }
+
+            }
+
+        }
+
+        if( !hasChanged )
+            return ItemStack.EMPTY;
+
+        Item item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + suffix ) );
+
+        if( item == null )
+            return ItemStack.EMPTY;
+
+        return new ItemStack( item, 1 );
 
     }
 
@@ -126,7 +154,6 @@ public class PressCraftingRecipe implements ICraftingRecipe {
                 final ItemStack stack1 = stack.copy();
                 stack1.setCount( 1 );
                 list.set( i, stack1 );
-                break;
 
             }
 
