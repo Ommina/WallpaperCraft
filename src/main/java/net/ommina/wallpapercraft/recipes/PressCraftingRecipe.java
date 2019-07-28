@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.ICraftingRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.JSONUtils;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -25,19 +24,19 @@ public class PressCraftingRecipe implements ICraftingRecipe {
     public static final ResourceLocation NAME = Wallpapercraft.getId( "presscrafting" );
     public static final Serializer SERIALIZER = new Serializer();
 
-    private ResourceLocation id;
-    private Press press;
-    private boolean valid = true;
+    private final ResourceLocation id;
 
-    public PressCraftingRecipe( ResourceLocation id ) {
+    public PressCraftingRecipe( final ResourceLocation id ) {
         this.id = id;
     }
 
     @Override
     public boolean matches( @Nonnull final CraftingInventory inv, @Nonnull final World world ) {
 
-        int i = 0;
-        int j = 0;
+        int patternPressCount = 0;
+        int colourPressCount = 0;
+        int variantPressCount = 0;
+        int decorativeCount = 0;
 
         for( int k = 0; k < inv.getSizeInventory(); k++ ) {
 
@@ -45,26 +44,28 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             if( !stack.isEmpty() ) {
 
-                if( stack.getItem() instanceof Press ) {
-                    i++;
+                if( stack.getItem() instanceof PressPattern ) {
+                    patternPressCount++;
+                } else if( stack.getItem() instanceof PressColour ) {
+                    colourPressCount++;
+                } else if( stack.getItem() instanceof PressVariant ) {
+                    variantPressCount++;
                 } else {
-
                     if( !(stack.getItem() instanceof DecorativeItem) ) {
                         return false;
                     }
-
-                    j++;
-
+                    decorativeCount++;
                 }
 
-                if( j > 1 || i > 3 ) {
+                if( decorativeCount > 1 || patternPressCount > 1 || colourPressCount > 1 || variantPressCount > 1 ) {
                     return false;
                 }
 
             }
         }
 
-        return i <= 3 && j == 1;
+        return decorativeCount == 1 && (patternPressCount == 1 || colourPressCount == 1 || variantPressCount == 1);
+
     }
 
     @Override
@@ -207,15 +208,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         @Override
         public PressCraftingRecipe read( @Nonnull final ResourceLocation recipeId, @Nonnull final JsonObject json ) {
 
-            final PressCraftingRecipe recipe = new PressCraftingRecipe( recipeId );
-
-
-            final Item press = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( JSONUtils.getString( json, "press", "missing" ) ) );
-
-            if( press instanceof Press )
-                recipe.press = (Press) press;
-
-            return recipe;
+            return new PressCraftingRecipe( recipeId );
 
         }
 
