@@ -15,7 +15,6 @@ import net.ommina.wallpapercraft.client.ClientProxy;
 import net.ommina.wallpapercraft.items.ModItems;
 import net.ommina.wallpapercraft.recipes.PressCraftingRecipe;
 import net.ommina.wallpapercraft.server.ServerProxy;
-import net.ommina.wallpapercraft.util.Proxy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,7 +22,7 @@ import org.apache.logging.log4j.Logger;
 @Mod( "wallpapercraft" )
 public class Wallpapercraft {
 
-    public static final Proxy PROXY = DistExecutor.runForDist( () -> ClientProxy::new, () -> ServerProxy::new );
+    public static final IProxy PROXY = DistExecutor.runForDist( () -> ClientProxy::new, () -> ServerProxy::new );
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "wallpapercraft";
 

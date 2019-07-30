@@ -1,13 +1,25 @@
 package net.ommina.wallpapercraft.client;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.common.Mod;
-import net.ommina.wallpapercraft.util.Proxy;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+import net.ommina.wallpapercraft.IProxy;
 
-@OnlyIn( Dist.CLIENT )
-@Mod.EventBusSubscriber()
-public final class ClientProxy implements Proxy {
+public class ClientProxy implements IProxy {
+
+    @Override
+    public void init() {
+    }
+
+    @Override
+    public World getClientWorld() {
+        return Minecraft.getInstance().world;
+    }
+
+    @Override
+    public PlayerEntity getClientPlayer() {
+        return Minecraft.getInstance().player;
+    }
 
 }
 
