@@ -10,7 +10,7 @@ public class Tags {
     public static final Tag<Item> TAG_PRESS_PATTERN = getTags( "press_pattern" );
     public static final Tag<Item> TAG_PRESS_COLOUR = getTags( "press_colour" );
     public static final Tag<Item> TAG_PRESS_VARIANT = getTags( "press_variant" );
-    public static final Tag<Item> TAG_DECORATIVE_ITEM = getTags( "decorative_item" );
+    //public static final Tag<Item> TAG_DECORATIVE_ITEM = getTags( "decorative_item" );
 
     private static Tag<Item> getTags( final String path ) {
 

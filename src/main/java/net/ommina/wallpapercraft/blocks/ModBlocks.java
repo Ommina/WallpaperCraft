@@ -55,8 +55,6 @@ public class ModBlocks {
 
     private static void registerColouredBlocks( final RegistryEvent.Register<Block> event, final String variant, final Material material, final SoundType soundType, final boolean isLight ) {
 
-        //StringBuilder sb = new StringBuilder( "wibble\n" );
-
         for ( String s : COLOURS ) {
 
             final int suffixCount = s.equals( "cyan" ) ? 9 : 14;
@@ -75,11 +73,8 @@ public class ModBlocks {
 
                 BLOCKS.put( block.getName(), block );
 
-//                sb.append( "\"wallpapercraft:" + block.getName() + "\",\n" );
             }
         }
-
-        //      System.out.print( sb.toString() );
 
     }
 
