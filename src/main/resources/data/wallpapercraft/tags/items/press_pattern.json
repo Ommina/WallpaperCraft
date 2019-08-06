@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "wallpapercraft:pressauralamp",
+    "wallpapercraft:presssolid",
+    "wallpapercraft:pressbrick",
+    "wallpapercraft:presscheckeredwool",
+    "wallpapercraft:pressclay",
+    "wallpapercraft:presscolouredbrick",
+    "wallpapercraft:pressdamask",
+    "wallpapercraft:pressdiagonallydotted",
+    "wallpapercraft:pressdotted",
+    "wallpapercraft:pressfancytiles",
+    "wallpapercraft:pressfloral",
+    "wallpapercraft:pressfrostedglass",
+    "wallpapercraft:pressjewel",
+    "wallpapercraft:pressrippled",
+    "wallpapercraft:pressstamp",
+    "wallpapercraft:pressstonebrick",
+    "wallpapercraft:pressstonelamp",
+    "wallpapercraft:pressstriped",
+    "wallpapercraft:presstexturedglass",
+    "wallpapercraft:presstintedglass",
+    "wallpapercraft:presswoodplank",
+    "wallpapercraft:presswool"
+  ]
+}

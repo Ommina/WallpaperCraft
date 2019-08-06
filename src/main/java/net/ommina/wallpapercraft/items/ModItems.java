@@ -15,13 +15,13 @@ public class ModItems {
             event.getRegistry().register( new DecorativeItem( ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s ) );
         } );
 
-        for( String s : ModBlocks.PATTERNS )
+        for ( String s : ModBlocks.PATTERNS )
             event.getRegistry().register( new PressPattern( s ) );
 
-        for( String s : ModBlocks.COLOURS )
+        for ( String s : ModBlocks.COLOURS )
             event.getRegistry().register( new PressColour( s ) );
 
-        for( int i = 0; i <= 14; i++ )
+        for ( int i = 0; i <= 14; i++ )
             event.getRegistry().register( new PressVariant( Integer.toString( i ) ) );
 
         event.getRegistry().register( new Item( new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "pressblank" ) );
