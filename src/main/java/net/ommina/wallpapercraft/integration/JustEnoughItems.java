@@ -2,12 +2,16 @@ package net.ommina.wallpapercraft.integration;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaRecipeCategoryUid;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.registration.IRecipeCategoryRegistration;
+import mezz.jei.api.recipe.category.extensions.IExtendableRecipeCategory;
+import mezz.jei.api.recipe.category.extensions.vanilla.crafting.ICraftingCategoryExtension;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IVanillaCategoryExtensionRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.ICraftingRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
@@ -24,26 +28,28 @@ public class JustEnoughItems implements IModPlugin {
 
     private static final ResourceLocation PLUGIN_UID = Wallpapercraft.getId( "plugin/main" );
 
-    public static final ResourceLocation PRESS_CRAFTING = Wallpapercraft.getId( "category/presscrafting" );
+    //public static final ResourceLocation PRESS_CRAFTING = Wallpapercraft.getId( "category/presscrafting" );
 
     @Override
     public ResourceLocation getPluginUid() {
         return PLUGIN_UID;
     }
 
-    @Override
-    public void registerCategories( final IRecipeCategoryRegistration registration ) {
-
-        registration.addRecipeCategories( new PressCraftingCategory( registration.getJeiHelpers().getGuiHelper() ) );
-
-    }
 
     @Override
     public void registerRecipes( IRecipeRegistration registration ) {
 
-        registration.addRecipes( getRecipesOfType( PressCraftingRecipe.RECIPE_TYPE ), PRESS_CRAFTING );
+        registration.addRecipes( getRecipesOfType( PressCraftingRecipe.RECIPE_TYPE ), VanillaRecipeCategoryUid.CRAFTING );
+
+    }
 
 
+    @Override
+    public void registerVanillaCategoryExtensions( IVanillaCategoryExtensionRegistration registration ) {
+
+        IExtendableRecipeCategory<ICraftingRecipe, ICraftingCategoryExtension> category = registration.getCraftingCategory();
+
+        category.addCategoryExtension( PressCraftingRecipe.class, PressCraftingCategory::new );
     }
 
     @Override

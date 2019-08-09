@@ -1,8 +1,6 @@
 {
   "itemGroup.wallpapercraft": "WallpaperCraft",
 
-  "gui.wallpapercraft.category.craftingtable": "Press Crafting",
-
   "text.wallpapercraft.tooltip.crafting": "Accepts any: WallpaperCraft block",
 
   "item.wallpapercraft.pressvariant0": "Variant Press: 1",
