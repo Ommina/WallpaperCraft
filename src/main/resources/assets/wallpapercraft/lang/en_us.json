@@ -1,7 +1,7 @@
 {
   "itemGroup.wallpapercraft": "WallpaperCraft",
 
-  "text.wallpapercraft.tooltip.crafting": "Accepts any: WallpaperCraft block",
+  "jei.wallpapercraft.solidgray-0.desc": "The base WallpaperCraft crafting block.\n\nCombine with one to three Presses to change its look.\n\nAny WallpaperCraft block, not just the base block, can be altered this way.",
 
   "item.wallpapercraft.pressvariant0": "Variant Press: 1",
   "item.wallpapercraft.pressvariant1": "Variant Press: 2",

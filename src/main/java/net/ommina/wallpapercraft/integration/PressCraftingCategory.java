@@ -1,7 +1,6 @@
 package net.ommina.wallpapercraft.integration;
 
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.ingredient.ITooltipCallback;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.extensions.vanilla.crafting.ICraftingCategoryExtension;
 import net.minecraft.item.ItemStack;
@@ -10,17 +9,15 @@ import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.recipes.PressCraftingRecipe;
 import net.ommina.wallpapercraft.tags.Tags;
-import net.ommina.wallpapercraft.util.Translator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PressCraftingCategory implements ICraftingCategoryExtension {
 
-    private static final ItemStack BASE_ITEM = new ItemStack( ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( "solidgray-0" ) ) );
+    public static final ItemStack BASE_ITEM = new ItemStack( ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( "solidgray-0" ) ) );
 
-    public PressCraftingCategory( PressCraftingRecipe recipe ) {
-    }
+    public PressCraftingCategory( PressCraftingRecipe recipe ) {}
 
     @Override
     public void setIngredients( IIngredients ingredients ) {
@@ -55,19 +52,6 @@ public class PressCraftingCategory implements ICraftingCategoryExtension {
 
         ingredients.setInputLists( VanillaTypes.ITEM, inputs );
         ingredients.setOutputLists( VanillaTypes.ITEM, outputs );
-
-    }
-
-    class ToolTip implements ITooltipCallback<ItemStack> {
-
-        @Override
-        public void onTooltip( int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip ) {
-
-            if ( slotIndex == 0 )
-                tooltip.add( Translator.translateToLocal( "text.wallpapercraft.tooltip.crafting" ) );
-
-
-        }
 
     }
 
