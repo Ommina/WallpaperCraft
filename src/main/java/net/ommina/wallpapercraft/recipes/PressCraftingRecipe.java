@@ -202,7 +202,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
     @Override
     public IRecipeType<?> getType() {
-        return RECIPE_TYPE;
+        return IRecipeType.CRAFTING;
     }
 
     @Nonnull
