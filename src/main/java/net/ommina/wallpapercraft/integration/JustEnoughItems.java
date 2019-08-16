@@ -38,7 +38,7 @@ public class JustEnoughItems implements IModPlugin {
     @Override
     public void registerRecipes( IRecipeRegistration registration ) {
 
-        registration.addRecipes( getRecipesOfType( PressCraftingRecipe.RECIPE_TYPE ), VanillaRecipeCategoryUid.CRAFTING );
+        registration.addRecipes( getRecipesOfType( IRecipeType.CRAFTING ), VanillaRecipeCategoryUid.CRAFTING );
 
         addInfoPage( registration, PressCraftingCategory.BASE_ITEM.getItem() );
 
@@ -67,7 +67,7 @@ public class JustEnoughItems implements IModPlugin {
 
     private static List<IRecipe> getRecipesOfType( IRecipeType<?> recipeType ) {
 
-        return Minecraft.getInstance().world.getRecipeManager().getRecipes().stream().filter( r -> r.getType() == recipeType ).collect( Collectors.toList() );
+        return Minecraft.getInstance().world.getRecipeManager().getRecipes().stream().filter( r -> r instanceof PressCraftingRecipe ).collect( Collectors.toList() );
 
     }
 

@@ -1,3 +1,4 @@
 {
-  "type": "wallpapercraft:presscrafting"
+  "type": "wallpapercraft:presscrafting",
+  "foo": "bar"
 }

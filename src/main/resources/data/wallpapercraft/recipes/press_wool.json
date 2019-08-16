@@ -3,13 +3,10 @@
   "group": "wallpapercraft",
   "pattern": [
     "   ",
-    "wbm",
+    "wb ",
     "   "
   ],
   "key": {
-    "m": {
-      "tag": "minecraft:wooden_trapdoors"
-    },
     "b": {
       "item": "wallpapercraft:pressblank"
     },
@@ -18,7 +15,7 @@
     }
   },
   "result": {
-    "item": "wallpapercraft:presscheckeredwool",
+    "item": "wallpapercraft:presswool",
     "count": 1
   }
 }

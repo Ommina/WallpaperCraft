@@ -7,7 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class CreativeTab extends ItemGroup {
 
     public CreativeTab() {
-        super( "WallpaperCraft" );
+        super( "wallpapercraft" );
 
     }
 
