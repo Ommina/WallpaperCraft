@@ -2,11 +2,10 @@ package net.ommina.wallpapercraft.items;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.registries.ObjectHolder;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 
-@ObjectHolder( Wallpapercraft.MODID )
+//@ObjectHolder( Wallpapercraft.MODID )
 public class ModItems {
 
     public static void register( final RegistryEvent.Register<Item> event ) {

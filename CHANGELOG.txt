@@ -1,0 +1,8 @@
+1.0.3  2019-08-16
+
+FIX: JEI not showing the "base block + patterns" recipe, making finding the starting block itself very difficult indeed.  (Thanks FraukeS for the issue report.)
+
+ADD: Wool Press recipe
+
+CHANGED: Patterned Wool Press recipe
+
