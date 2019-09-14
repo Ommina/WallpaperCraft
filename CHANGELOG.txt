@@ -1,3 +1,8 @@
+1.0.4  2019-09-13
+
+FIX: Update to play nicely with Forge 28.1 (the "requires language provider javafml:28 we have found 28.1" error)
+
+
 1.0.3  2019-08-16
 
 FIX: JEI not showing the "base block + patterns" recipe, making finding the starting block itself very difficult indeed.  (Thanks FraukeS for the issue report.)
