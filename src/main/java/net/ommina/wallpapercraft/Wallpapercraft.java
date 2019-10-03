@@ -10,16 +10,18 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.client.ClientProxy;
 import net.ommina.wallpapercraft.items.ModItems;
+import net.ommina.wallpapercraft.network.Network;
 import net.ommina.wallpapercraft.recipes.PressCraftingRecipe;
 import net.ommina.wallpapercraft.server.ServerProxy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
-@Mod( "wallpapercraft" )
+@Mod( Wallpapercraft.MODID )
 public class Wallpapercraft {
 
     public static final IProxy PROXY = DistExecutor.runForDist( () -> ClientProxy::new, () -> ServerProxy::new );
@@ -28,8 +30,14 @@ public class Wallpapercraft {
 
     public static final ItemGroup TAB = new CreativeTab();
 
+    //public static final MouseScrollHandler SCROLL_HANDLER = new MouseScrollHandler();
+
     public Wallpapercraft() {
+
         MinecraftForge.EVENT_BUS.register( this );
+
+        FMLJavaModLoadingContext.get().getModEventBus().addListener( this::setup );
+
     }
 
     public static ResourceLocation getId( String path ) {
@@ -38,8 +46,12 @@ public class Wallpapercraft {
 
     }
 
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
+    private void setup( final FMLCommonSetupEvent event ) {
+
+        Network.init();
+
+    }
+
     @Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.MOD )
     public static class RegistryEvents {
 

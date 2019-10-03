@@ -87,9 +87,9 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.forge_version}"
 
     // compile against the JEI API but do not include it at runtime
-    compileOnly fg.deobf("mezz.jei:jei-1.14.3:6.0.0.7:api")
+    compileOnly fg.deobf("mezz.jei:jei-1.14.4:6.0.0.13:api")
     // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("mezz.jei:jei-1.14.3:6.0.0.7")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.14.4:6.0.0.13")
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"

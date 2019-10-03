@@ -2,10 +2,10 @@ package net.ommina.wallpapercraft.items;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 
-//@ObjectHolder( Wallpapercraft.MODID )
 public class ModItems {
 
     public static void register( final RegistryEvent.Register<Item> event ) {
@@ -24,6 +24,12 @@ public class ModItems {
             event.getRegistry().register( new PressVariant( Integer.toString( i ) ) );
 
         event.getRegistry().register( new Item( new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "pressblank" ) );
+
+    }
+
+    public static DecorativeItem get( final String pattern, final String colour, final int suffix ) {
+
+        return (DecorativeItem) ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + "-" + suffix ) );
 
     }
 
