@@ -30,7 +30,7 @@ public class VariantScrollRequest {
 
         VariantScrollRequest packet = new VariantScrollRequest();
 
-        packet.delta = buf.readInt();
+        packet.delta = MathUtil.clamp( buf.readInt(), -1, 1 );
 
         return packet;
 

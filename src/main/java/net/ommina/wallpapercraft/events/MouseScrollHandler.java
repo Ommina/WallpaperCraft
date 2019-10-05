@@ -58,10 +58,8 @@ public class MouseScrollHandler {
 
         final DecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
 
-        if ( block != null ) {
+        if ( block != null )
             Network.channel.sendToServer( new VariantScrollRequest( delta ) );
-            System.out.println( block.toString() );
-        }
 
     }
 
