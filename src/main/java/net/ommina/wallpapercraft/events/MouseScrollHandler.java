@@ -5,7 +5,6 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,8 +15,7 @@ import net.ommina.wallpapercraft.network.Network;
 import net.ommina.wallpapercraft.network.VariantScrollRequest;
 import net.ommina.wallpapercraft.util.MathUtil;
 
-@OnlyIn( Dist.CLIENT )
-@Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.FORGE )
+@Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT )
 public class MouseScrollHandler {
 
     /*  //TODO: It may be worthwhile allowing the user to set a custom scroll key (or keys if we want to scroll between pattern and colour variants both).  But we'll see if there is any interest first.
@@ -62,5 +60,6 @@ public class MouseScrollHandler {
             Network.channel.sendToServer( new VariantScrollRequest( delta ) );
 
     }
+
 
 }
