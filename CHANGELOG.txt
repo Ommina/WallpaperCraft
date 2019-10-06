@@ -1,3 +1,9 @@
+1.0.5 2019-10-05
+
+ADD: Ability to sneak-scroll through a block's variants within a colour.  Feedback is invited here.
+ADD: Spawn a handful of base blocks and a (non-glass, non-glowing) pattern in village mason and 'generic' house chests.
+
+
 1.0.4  2019-09-13
 
 FIX: Update to play nicely with Forge 28.1 (the "requires language provider javafml:28 we have found 28.1" error)
@@ -10,4 +16,3 @@ FIX: JEI not showing the "base block + patterns" recipe, making finding the star
 ADD: Wool Press recipe
 
 CHANGED: Patterned Wool Press recipe
-
