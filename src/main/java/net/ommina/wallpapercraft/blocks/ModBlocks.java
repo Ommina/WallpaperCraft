@@ -1,9 +1,12 @@
 package net.ommina.wallpapercraft.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.GlassBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.ObjectHolder;
+import net.ommina.wallpapercraft.Wallpapercraft;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +19,8 @@ public class ModBlocks {
          "jewel", "rippled", "stamp", "stonebrick", "stonelamp", "striped", "texturedglass", "tintedglass", "woodplank", "wool" };
 
     public static final Map<String, DecorativeBlock> BLOCKS = new HashMap<String, DecorativeBlock>();
+
+    @ObjectHolder( "wallpapercraft:testglass" ) public static Block TESTGLASS;
 
     public static void register( final RegistryEvent.Register<Block> event ) {
 
@@ -50,6 +55,12 @@ public class ModBlocks {
         registerColouredBlocks( event, "solid", Material.ROCK, SoundType.STONE, false );
         registerColouredBlocks( event, "stonebrick", Material.ROCK, SoundType.STONE, false );
         registerColouredBlocks( event, "striped", Material.ROCK, SoundType.STONE, false );
+
+        //Blocks.GLASS
+
+        Block b = new GlassBlock( Block.Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS).func_226896_b_());
+        b.setRegistryName( Wallpapercraft.getId( "testglass" ) );
+        event.getRegistry().register( b );
 
     }
 

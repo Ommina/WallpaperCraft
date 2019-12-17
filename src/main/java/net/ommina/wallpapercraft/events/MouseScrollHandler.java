@@ -40,7 +40,7 @@ public class MouseScrollHandler {
         final ClientPlayerEntity player = Minecraft.getInstance().player;
         final ItemStack held = player.getHeldItem( Hand.MAIN_HAND );
 
-        if ( !held.isEmpty() && held.getItem() instanceof DecorativeItem && player.isSneaking() ) {
+        if ( !held.isEmpty() && held.getItem() instanceof DecorativeItem && player.isCrouching() ) {
 
             final int delta = MathUtil.clamp( (int) Math.round( event.getScrollDelta() ), -1, 1 );
 

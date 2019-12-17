@@ -4,14 +4,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityType;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-
-import javax.annotation.Nonnull;
 
 public class DecorativeBlockGlass extends DecorativeBlockPatterned {
 
@@ -19,22 +16,50 @@ public class DecorativeBlockGlass extends DecorativeBlockPatterned {
         super( variant, colour, suffix, material, soundType, light );
     }
 
-    @Nonnull
-    @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
+//region Overrides
+    public boolean canEntitySpawn( BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type ) {
+        return false;
     }
 
-    @Override
+    public boolean isNormalCube( BlockState state, IBlockReader worldIn, BlockPos pos ) {
+        return false;
+    }
+
+    public boolean func_229869_c_( BlockState p_229869_1_, IBlockReader p_229869_2_, BlockPos p_229869_3_ ) {
+        return false;
+    }
+
+    @OnlyIn( Dist.CLIENT )
+    public boolean isSideInvisible( BlockState state, BlockState adjacentBlockState, Direction side ) {
+        return adjacentBlockState.getBlock() == this || super.isSideInvisible( state, adjacentBlockState, side );
+    }
+
     public boolean propagatesSkylightDown( BlockState state, IBlockReader reader, BlockPos pos ) {
         return true;
     }
 
-    @Override
-    public boolean causesSuffocation( BlockState state, IBlockReader worldIn, BlockPos pos ) {
-        return false;
+    @OnlyIn( Dist.CLIENT )
+    public float getAmbientOcclusionLightValue( BlockState p_220080_1_, IBlockReader p_220080_2_, BlockPos p_220080_3_ ) {
+        return 0.2F;
     }
 
+
+    @Deprecated
+    public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return 0;
+    }
+
+//endregion Overrides
+
+/*
+
+    //region Overrides
+
+    //@Nonnull
+    //@Override
+    //public BlockRenderLayer getRenderLayer() {
+    //    return BlockRenderLayer.TRANSLUCENT;
+    //}
     @Override
     public boolean canEntitySpawn( BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type ) {
         return false;
@@ -45,6 +70,12 @@ public class DecorativeBlockGlass extends DecorativeBlockPatterned {
         return false;
     }
 
+    @Override
+    public BlockRenderType getRenderType( final BlockState state ) {
+        return BlockRenderType.MODEL;
+    }
+
+
     @OnlyIn( Dist.CLIENT )
     @Override
     public boolean isSideInvisible( BlockState state, BlockState adjacentBlockState, Direction side ) {
@@ -52,4 +83,15 @@ public class DecorativeBlockGlass extends DecorativeBlockPatterned {
         return adjacentBlockState.getBlock() == this || super.isSideInvisible( state, adjacentBlockState, side );
     }
 
+    @Override
+    public boolean propagatesSkylightDown( BlockState state, IBlockReader reader, BlockPos pos ) {
+        return true;
+    }
+//endregion Overrides
+
+    //@Override
+    //public boolean causesSuffocation( BlockState state, IBlockReader worldIn, BlockPos pos ) {
+    //    return false;
+    //}
+*/
 }

@@ -1,5 +1,6 @@
 package net.ommina.wallpapercraft.items;
 
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -21,6 +22,8 @@ public class ModItems {
     @ObjectHolder( "pressstonebrick" ) public static Item PRESS_STONE_BRICK;
     @ObjectHolder( "pressstriped" ) public static Item PRESS_STRIPED;
 
+    @ObjectHolder( "testglass" ) public static Item TEST_GLASS;
+
     public static void register( final RegistryEvent.Register<Item> event ) {
 
         ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> {
@@ -37,6 +40,9 @@ public class ModItems {
             event.getRegistry().register( new PressVariant( Integer.toString( i ) ) );
 
         event.getRegistry().register( new Item( new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "pressblank" ) );
+
+        event.getRegistry().register( new BlockItem( ModBlocks.TESTGLASS, new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "testglass" ) );
+
 
     }
 

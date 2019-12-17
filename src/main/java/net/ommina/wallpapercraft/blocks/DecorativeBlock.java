@@ -19,6 +19,8 @@ public abstract class DecorativeBlock extends Block {
 
         );
 
+        //new GlassBlock( Block.Properties.create( Material.GLASS ).hardnessAndResistance( 0.3F ).sound( SoundType.GLASS ).func_226896_b_() ));
+
         this.pattern = pattern;
         this.colour = colour;
         this.suffix = "-" + suffix;
