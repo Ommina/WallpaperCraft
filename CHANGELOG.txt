@@ -1,3 +1,10 @@
+1.1.0 2019-12-23
+
+CHANGED: Port to 1.15.1
+
+This is built against a beta Forge release, and may fail if Forge introduces breaking changes in future releases.  Probably not, but may.
+
+
 1.0.6 2019-11-25
 
 CHANGED: Compress Block Textures.  Across all 2300 textures, it makes a difference of about 240KB.  Which is hardly Earth-shattering, but all the cool kids are doing it, so I guess I will too.

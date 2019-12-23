@@ -16,7 +16,6 @@ public class ModItems {
 
     @ObjectHolder( "pressclay" ) public static Item PRESS_CLAY;
     @ObjectHolder( "presswoodplank" ) public static Item PRESS_WOOD_PLANK;
-    @ObjectHolder( "pressbirck" ) public static Item PRESS_BRICK;
     @ObjectHolder( "presscolouredbrick" ) public static Item PRESS_COLOURED_BRICK;
     @ObjectHolder( "presssolid" ) public static Item PRESS_SOLID;
     @ObjectHolder( "pressstonebrick" ) public static Item PRESS_STONE_BRICK;
