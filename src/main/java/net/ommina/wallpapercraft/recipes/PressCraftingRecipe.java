@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.ommina.wallpapercraft.Wallpapercraft;
-import net.ommina.wallpapercraft.blocks.DecorativeBlock;
+import net.ommina.wallpapercraft.blocks.IDecorativeBlock;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.items.*;
 
@@ -92,7 +92,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             if ( !stack.isEmpty() && stack.getItem() instanceof DecorativeItem ) {
 
-                final DecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
+                final IDecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
 
                 if ( block == null )
                     return ItemStack.EMPTY;

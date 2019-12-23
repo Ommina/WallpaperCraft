@@ -1,97 +1,48 @@
 package net.ommina.wallpapercraft.blocks;
 
-import net.minecraft.block.BlockState;
+import net.minecraft.block.AbstractGlassBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class DecorativeBlockGlass extends DecorativeBlockPatterned {
+public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorativeBlock {
 
-    public DecorativeBlockGlass( final String variant, final String colour, final int suffix, final Material material, final SoundType soundType, final int light ) {
-        super( variant, colour, suffix, material, soundType, light );
+    private final String pattern;
+    private final String colour;
+    private final String suffix;
+
+    public DecorativeBlockGlass( final String pattern, final String colour, final int suffix, final Material material, final SoundType soundType, final int light ) {
+
+        super( Block.Properties.create( material )
+             .sound( soundType )
+             .hardnessAndResistance( 2.0f )
+             .lightValue( light )
+             .func_226896_b_()
+        );
+
+        this.pattern = pattern;
+        this.colour = colour;
+        this.suffix = "-" + suffix;
+
+        setRegistryName( getName() );
+
     }
 
-//region Overrides
-    public boolean canEntitySpawn( BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type ) {
-        return false;
+    public String getName() {
+        return this.pattern + this.colour + this.suffix;
     }
 
-    public boolean isNormalCube( BlockState state, IBlockReader worldIn, BlockPos pos ) {
-        return false;
+    public String getPattern() {
+        return this.pattern;
     }
 
-    public boolean func_229869_c_( BlockState p_229869_1_, IBlockReader p_229869_2_, BlockPos p_229869_3_ ) {
-        return false;
+    public String getColour() {
+        return this.colour;
     }
 
-    @OnlyIn( Dist.CLIENT )
-    public boolean isSideInvisible( BlockState state, BlockState adjacentBlockState, Direction side ) {
-        return adjacentBlockState.getBlock() == this || super.isSideInvisible( state, adjacentBlockState, side );
-    }
-
-    public boolean propagatesSkylightDown( BlockState state, IBlockReader reader, BlockPos pos ) {
-        return true;
-    }
-
-    @OnlyIn( Dist.CLIENT )
-    public float getAmbientOcclusionLightValue( BlockState p_220080_1_, IBlockReader p_220080_2_, BlockPos p_220080_3_ ) {
-        return 0.2F;
-    }
-
-
-    @Deprecated
-    public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return 0;
-    }
-
-//endregion Overrides
-
-/*
-
-    //region Overrides
-
-    //@Nonnull
-    //@Override
-    //public BlockRenderLayer getRenderLayer() {
-    //    return BlockRenderLayer.TRANSLUCENT;
-    //}
-    @Override
-    public boolean canEntitySpawn( BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type ) {
-        return false;
-    }
-
-    @Override
-    public boolean isNormalCube( BlockState state, IBlockReader worldIn, BlockPos pos ) {
-        return false;
-    }
-
-    @Override
-    public BlockRenderType getRenderType( final BlockState state ) {
-        return BlockRenderType.MODEL;
+    public String getSuffix() {
+        return this.suffix;
     }
 
 
-    @OnlyIn( Dist.CLIENT )
-    @Override
-    public boolean isSideInvisible( BlockState state, BlockState adjacentBlockState, Direction side ) {
-
-        return adjacentBlockState.getBlock() == this || super.isSideInvisible( state, adjacentBlockState, side );
-    }
-
-    @Override
-    public boolean propagatesSkylightDown( BlockState state, IBlockReader reader, BlockPos pos ) {
-        return true;
-    }
-//endregion Overrides
-
-    //@Override
-    //public boolean causesSuffocation( BlockState state, IBlockReader worldIn, BlockPos pos ) {
-    //    return false;
-    //}
-*/
 }

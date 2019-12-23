@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.ommina.wallpapercraft.blocks.DecorativeBlock;
+import net.ommina.wallpapercraft.blocks.IDecorativeBlock;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.items.DecorativeItem;
 import net.ommina.wallpapercraft.network.Network;
@@ -54,12 +54,11 @@ public class MouseScrollHandler {
 
     private static void cycleVariant( ItemStack stack, int delta ) {
 
-        final DecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
+        final IDecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
 
         if ( block != null )
             Network.channel.sendToServer( new VariantScrollRequest( delta ) );
 
     }
-
 
 }

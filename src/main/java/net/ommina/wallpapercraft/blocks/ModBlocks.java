@@ -1,12 +1,13 @@
 package net.ommina.wallpapercraft.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.GlassBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.registries.ObjectHolder;
-import net.ommina.wallpapercraft.Wallpapercraft;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,9 +19,7 @@ public class ModBlocks {
          "damask", "diagonallydotted", "dotted", "fancytiles", "floral", "frostedglass",
          "jewel", "rippled", "stamp", "stonebrick", "stonelamp", "striped", "texturedglass", "tintedglass", "woodplank", "wool" };
 
-    public static final Map<String, DecorativeBlock> BLOCKS = new HashMap<String, DecorativeBlock>();
-
-    @ObjectHolder( "wallpapercraft:testglass" ) public static Block TESTGLASS;
+    public static final Map<String, IDecorativeBlock> BLOCKS = new HashMap<String, IDecorativeBlock>();
 
     public static void register( final RegistryEvent.Register<Block> event ) {
 
@@ -56,11 +55,7 @@ public class ModBlocks {
         registerColouredBlocks( event, "stonebrick", Material.ROCK, SoundType.STONE, false );
         registerColouredBlocks( event, "striped", Material.ROCK, SoundType.STONE, false );
 
-        //Blocks.GLASS
-
-        Block b = new GlassBlock( Block.Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS).func_226896_b_());
-        b.setRegistryName( Wallpapercraft.getId( "testglass" ) );
-        event.getRegistry().register( b );
+        setGlassTransparancy();
 
     }
 
@@ -72,7 +67,7 @@ public class ModBlocks {
 
             for ( int suffix = 0; suffix <= suffixCount; suffix++ ) {
 
-                final DecorativeBlock block;
+                final IDecorativeBlock block;
                 final int light = isLight ? 15 : 0;
 
                 if ( material == Material.GLASS )
@@ -80,12 +75,23 @@ public class ModBlocks {
                 else
                     block = new DecorativeBlockPatterned( variant, s, suffix, material, soundType, light );
 
-                event.getRegistry().register( block );
+                event.getRegistry().register( (Block) block );
 
                 BLOCKS.put( block.getName(), block );
 
             }
         }
+
+    }
+
+    private static void setGlassTransparancy() {
+
+        if ( FMLEnvironment.dist != Dist.CLIENT )
+            return;
+
+        final RenderType translucentRenderType =  RenderType.func_228645_f_();
+
+        BLOCKS.values().stream().filter( b -> b instanceof DecorativeBlockGlass ).forEach( b -> RenderTypeLookup.setRenderLayer( (Block) b, translucentRenderType ) );
 
     }
 

@@ -1,12 +1,45 @@
 package net.ommina.wallpapercraft.blocks;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BreakableBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
-public class DecorativeBlockPatterned extends DecorativeBlock {
+public class DecorativeBlockPatterned extends BreakableBlock implements  IDecorativeBlock{
+    private final String pattern;
+    private final String colour;
+    private final String suffix;
 
-    public DecorativeBlockPatterned( final String variant, final String colour, final int suffix, final Material material, final SoundType soundType, final int light ) {
-        super( variant, colour, suffix, material, soundType, light );
+    public DecorativeBlockPatterned( final String pattern, final String colour, final int suffix, final Material material, final SoundType soundType, final int light ) {
+
+        super( Block.Properties.create( material )
+             .sound( soundType )
+             .hardnessAndResistance( 2.0f )
+             .lightValue( light )
+        );
+
+        this.pattern = pattern;
+        this.colour = colour;
+        this.suffix = "-" + suffix;
+
+        setRegistryName( getName() );
+
+    }
+
+    public String getName() {
+        return this.pattern + this.colour + this.suffix;
+    }
+
+    public String getPattern() {
+        return this.pattern;
+    }
+
+    public String getColour() {
+        return this.colour;
+    }
+
+    public String getSuffix() {
+        return this.suffix;
     }
 
 }
