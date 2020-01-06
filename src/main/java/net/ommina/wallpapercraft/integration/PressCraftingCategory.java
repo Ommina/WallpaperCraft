@@ -17,8 +17,10 @@ public class PressCraftingCategory implements ICraftingCategoryExtension {
 
     public static final ItemStack BASE_ITEM = new ItemStack( ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( "solidgray-0" ) ) );
 
-    public PressCraftingCategory( PressCraftingRecipe recipe ) {}
+    public PressCraftingCategory( PressCraftingRecipe recipe ) {
+    }
 
+//region Overrides
     @Override
     public void setIngredients( IIngredients ingredients ) {
 
@@ -30,7 +32,7 @@ public class PressCraftingCategory implements ICraftingCategoryExtension {
 
         final List<ItemStack> output = new ArrayList<>();
 
-        ModBlocks.BLOCKS.values().forEach( b -> output.add( new ItemStack( ForgeRegistries.ITEMS.getValue( b.getRegistryName() ) ) ) );
+        ModBlocks.BLOCKS.values().forEach( b -> output.add( new ItemStack( ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( b.getName() ) ) ) ) );
 
         baseItem.add( BASE_ITEM );
 
@@ -54,5 +56,6 @@ public class PressCraftingCategory implements ICraftingCategoryExtension {
         ingredients.setOutputLists( VanillaTypes.ITEM, outputs );
 
     }
+//endregion Overrides
 
 }

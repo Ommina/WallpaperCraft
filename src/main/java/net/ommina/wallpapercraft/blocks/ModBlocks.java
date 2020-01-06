@@ -89,7 +89,7 @@ public class ModBlocks {
         if ( FMLEnvironment.dist != Dist.CLIENT )
             return;
 
-        final RenderType translucentRenderType =  RenderType.func_228645_f_();
+        final RenderType translucentRenderType = RenderType.func_228645_f_();
 
         BLOCKS.values().stream().filter( b -> b instanceof DecorativeBlockGlass ).forEach( b -> RenderTypeLookup.setRenderLayer( (Block) b, translucentRenderType ) );
 

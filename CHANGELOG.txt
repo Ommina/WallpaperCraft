@@ -1,3 +1,10 @@
+1.1.1 2020-01-05
+
+CHANGED: Re-enabled JEI integration, now that JEI has an Alpha release for 1.15.1.
+
+Built against Forge 30.0.30.  Still a Beta Forge.  Still may have breaking changes in the future.
+
+
 1.1.0 2019-12-23
 
 CHANGED: Port to 1.15.1
