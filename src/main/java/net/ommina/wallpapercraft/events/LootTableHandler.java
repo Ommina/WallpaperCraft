@@ -45,7 +45,7 @@ public class LootTableHandler {
 
         final LootPool.Builder pool = LootPool.builder().name( Wallpapercraft.MODID + "common" ).rolls( new ConstantRange( rolls ) );
         final LootEntry.Builder lootEntry = ItemLootEntry.builder( ModItems.BASE_ITEM );
-        final ILootFunction.IBuilder function = SetCount.func_215932_a( new ConstantRange( stackSize ) );
+        final ILootFunction.IBuilder function = SetCount.builder( new ConstantRange( stackSize ) );
 
         ((StandaloneLootEntry.Builder) lootEntry).acceptFunction( function );
 
@@ -58,7 +58,7 @@ public class LootTableHandler {
     private static LootPool getPatternPool() {
 
         final LootPool.Builder pool = LootPool.builder().name( Wallpapercraft.MODID + "pattern" ).rolls( new ConstantRange( 1 ) );
-        final ILootFunction.IBuilder function = SetCount.func_215932_a( new ConstantRange( 1 ) );
+        final ILootFunction.IBuilder function = SetCount.builder( new ConstantRange( 1 ) );
 
         pool.addEntry( ItemLootEntry.builder( ModItems.PRESS_CLAY ).acceptFunction( function ) );
         pool.addEntry( ItemLootEntry.builder( ModItems.PRESS_WOOD_PLANK ).acceptFunction( function ) );
