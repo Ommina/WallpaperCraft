@@ -55,6 +55,9 @@ public class ModBlocks {
         registerColouredBlocks( event, "stonebrick", Material.ROCK, SoundType.STONE, false );
         registerColouredBlocks( event, "striped", Material.ROCK, SoundType.STONE, false );
 
+        event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "compressed" ) );
+        event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "hardened" ) );
+
         setGlassTransparancy();
 
     }
@@ -89,7 +92,7 @@ public class ModBlocks {
         if ( FMLEnvironment.dist != Dist.CLIENT )
             return;
 
-        final RenderType translucentRenderType = RenderType.translucent();// func_228645_f_();
+        final RenderType translucentRenderType = RenderType.getTranslucent();
 
         BLOCKS.values().stream().filter( b -> b instanceof DecorativeBlockGlass ).forEach( b -> RenderTypeLookup.setRenderLayer( (Block) b, translucentRenderType ) );
 

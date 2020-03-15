@@ -17,7 +17,7 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
              .sound( soundType )
              .hardnessAndResistance( 2.0f )
              .lightValue( light )
-             .func_226896_b_()
+             .notSolid()
         );
 
         this.pattern = pattern;
