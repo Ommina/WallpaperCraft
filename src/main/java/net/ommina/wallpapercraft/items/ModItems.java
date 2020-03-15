@@ -1,6 +1,7 @@
 package net.ommina.wallpapercraft.items;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -37,6 +38,8 @@ public class ModItems {
             event.getRegistry().register( new PressVariant( Integer.toString( i ) ) );
 
         event.getRegistry().register( new Item( new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "pressblank" ) );
+        event.getRegistry().register( new BlockItem( ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( ("compressed") ) ), new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "compressed" ) );
+        event.getRegistry().register( new BlockItem( ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( ("hardened") ) ), new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "hardened" ) );
 
     }
 
