@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wallpapercraft",
+  "ingredients": [
+    {
+      "item": "wallpapercraft:compressed"
+    }
+  ],
+  "result": {
+    "item": "wallpapercraft:solidgray-0",
+    "count": 9
+  }
+}

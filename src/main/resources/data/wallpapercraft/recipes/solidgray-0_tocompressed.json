@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "key": {
+    "s": {
+      "item": "wallpapercraft:solidgray-0"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:compressed",
+    "count": 1
+  }
+}

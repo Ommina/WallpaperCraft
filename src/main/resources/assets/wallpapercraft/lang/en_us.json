@@ -53,6 +53,9 @@
   "item.wallpapercraft.presscolouredbrick": "Pattern Press: Colored Brick",
   "item.wallpapercraft.presssolid": "Pattern Press: Solid",
 
+  "block.wallpapercraft.hardened": "Hardened Solid White Gray",
+  "block.wallpapercraft.compressed": "Compressed Solid White Gray",
+
   "block.wallpapercraft.stamp-0": "Stamp Pink",
   "block.wallpapercraft.stamp-1": "Stamp Red",
   "block.wallpapercraft.stamp-2": "Stamp Hot Pink",
