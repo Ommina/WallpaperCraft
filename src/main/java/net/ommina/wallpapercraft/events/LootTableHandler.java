@@ -1,14 +1,18 @@
 package net.ommina.wallpapercraft.events;
 
 
-import net.minecraft.world.storage.loot.*;
-import net.minecraft.world.storage.loot.functions.ILootFunction;
-import net.minecraft.world.storage.loot.functions.SetCount;
+import net.minecraft.loot.*;
+import net.minecraft.loot.functions.ILootFunction;
+import net.minecraft.loot.functions.SetCount;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.items.ModItems;
+
+//import net.minecraft.world.storage.loot.functions.SetCount;
+
+//import net.minecraft.world.storage.loot.functions.ILootFunction;
 
 @Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.FORGE )
 public class LootTableHandler {

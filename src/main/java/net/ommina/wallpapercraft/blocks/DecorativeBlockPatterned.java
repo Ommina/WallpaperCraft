@@ -5,7 +5,7 @@ import net.minecraft.block.BreakableBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
-public class DecorativeBlockPatterned extends BreakableBlock implements  IDecorativeBlock{
+public class DecorativeBlockPatterned extends BreakableBlock implements IDecorativeBlock {
     private final String pattern;
     private final String colour;
     private final String suffix;
@@ -15,7 +15,7 @@ public class DecorativeBlockPatterned extends BreakableBlock implements  IDecora
         super( Block.Properties.create( material )
              .sound( soundType )
              .hardnessAndResistance( 2.0f )
-             .lightValue( light )
+             .func_235838_a_( ( p_235464_0_ ) -> 15 )
         );
 
         this.pattern = pattern;
@@ -26,6 +26,7 @@ public class DecorativeBlockPatterned extends BreakableBlock implements  IDecora
 
     }
 
+    //region Overrides
     public String getName() {
         return this.pattern + this.colour + this.suffix;
     }
@@ -41,5 +42,6 @@ public class DecorativeBlockPatterned extends BreakableBlock implements  IDecora
     public String getSuffix() {
         return this.suffix;
     }
+//endregion Overrides
 
 }

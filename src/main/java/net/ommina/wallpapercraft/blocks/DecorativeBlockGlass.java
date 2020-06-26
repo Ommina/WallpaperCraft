@@ -16,8 +16,8 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
         super( Block.Properties.create( material )
              .sound( soundType )
              .hardnessAndResistance( 2.0f )
-             .lightValue( light )
              .notSolid()
+             .func_235838_a_( ( p_235464_0_ ) -> 15 )
         );
 
         this.pattern = pattern;
@@ -28,6 +28,7 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
 
     }
 
+    //region Overrides
     public String getName() {
         return this.pattern + this.colour + this.suffix;
     }
@@ -43,6 +44,7 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
     public String getSuffix() {
         return this.suffix;
     }
+//endregion Overrides
 
 
 }

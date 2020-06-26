@@ -8,7 +8,7 @@
 modLoader="javafml" #mandatory
 
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[31,)" #mandatory (31 is forge for 1.15.2)
+loaderVersion="[32,)" #mandatory (32 is forge for 1.16.1)
 
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL="https://github.com/Ommina/WallpaperCraft" #optional
@@ -20,7 +20,7 @@ issueTrackerURL="https://github.com/Ommina/WallpaperCraft" #optional
 modId="wallpapercraft" #mandatory
 
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.2.0" #mandatory
+version="1.3.0" #mandatory
 
 # A display name for the mod
 displayName="Wallpapercraft" #mandatory
@@ -52,7 +52,7 @@ Wallpapercraft - A Fresh Roll
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[31,)" #mandatory
+    versionRange="[32,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
