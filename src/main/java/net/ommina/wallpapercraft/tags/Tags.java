@@ -13,11 +13,7 @@ public class Tags {
     //public static final Tag<Item> TAG_DECORATIVE_ITEM = getTags( "decorative_item" );
 
     private static ITag.INamedTag<Item> getTags( final String path ) {
-
-        final ITag.INamedTag<Item> tags = new ItemTags().makeWrapperTag( Wallpapercraft.getId( path ).toString() );
-
-        return tags;
-
+        return ItemTags.makeWrapperTag( Wallpapercraft.getId( path ).toString() );
     }
 
 }

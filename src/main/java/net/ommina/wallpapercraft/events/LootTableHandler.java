@@ -10,10 +10,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.items.ModItems;
 
-//import net.minecraft.world.storage.loot.functions.SetCount;
-
-//import net.minecraft.world.storage.loot.functions.ILootFunction;
-
 @Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.FORGE )
 public class LootTableHandler {
 
