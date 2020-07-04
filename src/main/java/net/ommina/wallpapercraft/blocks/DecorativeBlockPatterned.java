@@ -15,7 +15,7 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
         super( Block.Properties.create( material )
              .sound( soundType )
              .hardnessAndResistance( 2.0f )
-             .func_235838_a_( ( p_235464_0_ ) -> 15 )
+             .func_235838_a_( ( p_235464_0_ ) -> light )
         );
 
         this.pattern = pattern;

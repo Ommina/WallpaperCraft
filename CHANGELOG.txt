@@ -1,5 +1,6 @@
-1.3.2   2020 June 30
+1.3.1   2020 July 04
 
 FIX: Add missing Wooden Plank Press recipe
+FIX: Non-light blocks will no longer emit light.  A block update may be requried for the change to take effect, but be aware that previously bright areas may no longer be lit.
 
-Built against Forge 32.0.38
+Built against Forge 32.0.47 and JEI 7.0.0.6
