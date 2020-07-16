@@ -4,17 +4,21 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BreakableBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.common.ToolType;
 
 public class DecorativeBlockPatterned extends BreakableBlock implements IDecorativeBlock {
     private final String pattern;
     private final String colour;
     private final String suffix;
 
-    public DecorativeBlockPatterned( final String pattern, final String colour, final int suffix, final Material material, final SoundType soundType, final int light ) {
+    public DecorativeBlockPatterned( final String pattern, final String colour, final int suffix, final Material material, final ToolType toolType, final SoundType soundType, final int light ) {
 
         super( Block.Properties.create( material )
              .sound( soundType )
-             .hardnessAndResistance( 2.0f )
+             .harvestTool( toolType )
+             .harvestLevel( 0 )
+             .hardnessAndResistance( 1.5f )
+             .func_235861_h_()                              // https://github.com/MinecraftForge/MinecraftForge/issues/6906#issuecomment-653921871
              .func_235838_a_( ( p_235464_0_ ) -> light )
         );
 

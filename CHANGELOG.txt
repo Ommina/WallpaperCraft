@@ -1,3 +1,11 @@
+1.3.2   2020-07-16
+
+FIX: Harvest Levels and Tool Types not being applied.  This fix requires Forge 32.0.55 or greater to have an effect.
+CHANGE: Wood planks now use an axe to harvest instead of a pickaxe.
+CHANGE: Changed the base harvest speed of non-glass blocks to match that of vanilla stone.
+
+Built against Forge 32.0.67 and JEI 7.0.0.6
+
 1.3.1   2020 July 04
 
 FIX: Add missing Wooden Plank Press recipe

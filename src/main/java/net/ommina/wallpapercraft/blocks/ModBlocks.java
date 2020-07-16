@@ -6,6 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
@@ -24,36 +25,36 @@ public class ModBlocks {
     public static void register( final RegistryEvent.Register<Block> event ) {
 
         // Light Emitting
-        registerColouredBlocks( event, "auralamp", Material.ROCK, SoundType.LANTERN, true );
-        registerColouredBlocks( event, "stonelamp", Material.ROCK, SoundType.LANTERN, true );
+        registerColouredBlocks( event, "auralamp", Material.ROCK, ToolType.PICKAXE, SoundType.LANTERN, true );
+        registerColouredBlocks( event, "stonelamp", Material.ROCK, ToolType.PICKAXE, SoundType.LANTERN, true );
 
         // Pane in the Glass
-        registerColouredBlocks( event, "frostedglass", Material.GLASS, SoundType.GLASS, false );
-        registerColouredBlocks( event, "texturedglass", Material.GLASS, SoundType.GLASS, false );
-        registerColouredBlocks( event, "tintedglass", Material.GLASS, SoundType.GLASS, false );
+        registerColouredBlocks( event, "frostedglass", Material.GLASS, ToolType.PICKAXE, SoundType.GLASS, false );
+        registerColouredBlocks( event, "texturedglass", Material.GLASS, ToolType.PICKAXE, SoundType.GLASS, false );
+        registerColouredBlocks( event, "tintedglass", Material.GLASS, ToolType.PICKAXE, SoundType.GLASS, false );
 
         // Wool
-        registerColouredBlocks( event, "checkeredwool", Material.WOOL, SoundType.CLOTH, false );
-        registerColouredBlocks( event, "wool", Material.WOOL, SoundType.CLOTH, false );
+        registerColouredBlocks( event, "checkeredwool", Material.WOOL, ToolType.PICKAXE, SoundType.CLOTH, false );
+        registerColouredBlocks( event, "wool", Material.WOOL, ToolType.PICKAXE, SoundType.CLOTH, false );
 
         // Clay
-        registerColouredBlocks( event, "clay", Material.CLAY, SoundType.STONE, false );
+        registerColouredBlocks( event, "clay", Material.CLAY, ToolType.PICKAXE, SoundType.STONE, false );
 
         // Wood
-        registerColouredBlocks( event, "woodplank", Material.WOOD, SoundType.WOOD, false );
+        registerColouredBlocks( event, "woodplank", Material.WOOD, ToolType.AXE, SoundType.WOOD, false );
 
         // And the rest
-        registerColouredBlocks( event, "brick", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "colouredbrick", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "damask", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "diagonallydotted", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "dotted", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "fancytiles", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "floral", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "rippled", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "solid", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "stonebrick", Material.ROCK, SoundType.STONE, false );
-        registerColouredBlocks( event, "striped", Material.ROCK, SoundType.STONE, false );
+        registerColouredBlocks( event, "brick", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "colouredbrick", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "damask", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "diagonallydotted", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "dotted", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "fancytiles", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "floral", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "rippled", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "solid", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "stonebrick", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "striped", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
 
         event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "compressed" ) );
         event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "hardened" ) );
@@ -62,7 +63,7 @@ public class ModBlocks {
 
     }
 
-    private static void registerColouredBlocks( final RegistryEvent.Register<Block> event, final String variant, final Material material, final SoundType soundType, final boolean isLight ) {
+    private static void registerColouredBlocks( final RegistryEvent.Register<Block> event, final String variant, final Material material, final ToolType toolType, SoundType soundType, final boolean isLight ) {
 
         for ( String s : COLOURS ) {
 
@@ -74,9 +75,9 @@ public class ModBlocks {
                 final int light = isLight ? 15 : 0;
 
                 if ( material == Material.GLASS )
-                    block = new DecorativeBlockGlass( variant, s, suffix, material, soundType, light );
+                    block = new DecorativeBlockGlass( variant, s, suffix, material, toolType, soundType, light );
                 else
-                    block = new DecorativeBlockPatterned( variant, s, suffix, material, soundType, light );
+                    block = new DecorativeBlockPatterned( variant, s, suffix, material, toolType, soundType, light );
 
                 event.getRegistry().register( (Block) block );
 

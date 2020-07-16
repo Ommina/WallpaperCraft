@@ -4,6 +4,7 @@ import net.minecraft.block.AbstractGlassBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.common.ToolType;
 
 public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorativeBlock {
 
@@ -11,12 +12,15 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
     private final String colour;
     private final String suffix;
 
-    public DecorativeBlockGlass( final String pattern, final String colour, final int suffix, final Material material, final SoundType soundType, final int light ) {
+    public DecorativeBlockGlass( final String pattern, final String colour, final int suffix, final Material material, final ToolType toolType, final SoundType soundType, final int light ) {
 
         super( Block.Properties.create( material )
              .sound( soundType )
+             .harvestTool( toolType )
+             .harvestLevel( 0 )
              .hardnessAndResistance( 2.0f )
              .notSolid()
+             .func_235861_h_()
              .func_235838_a_( ( p_235464_0_ ) -> light )
         );
 
