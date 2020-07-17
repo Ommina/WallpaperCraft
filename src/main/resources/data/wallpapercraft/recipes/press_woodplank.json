@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "   ",
+    "mb ",
+    "   "
+  ],
+  "key": {
+    "m": {
+      "tag": "minecraft:planks"
+    },
+    "b": {
+      "item": "wallpapercraft:pressblank"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:presswoodplank",
+    "count": 1
+  }
+}
