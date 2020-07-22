@@ -9,9 +9,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.ommina.wallpapercraft.sounds.ModSoundType;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class ModBlocks {
 
@@ -38,28 +40,43 @@ public class ModBlocks {
         registerColouredBlocks( event, "wool", Material.WOOL, ToolType.PICKAXE, SoundType.CLOTH, false );
 
         // Clay
-        registerColouredBlocks( event, "clay", Material.CLAY, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "clay", Material.CLAY, ToolType.PICKAXE, ModSoundType.STONE, false );
 
         // Wood
         registerColouredBlocks( event, "woodplank", Material.WOOD, ToolType.AXE, SoundType.WOOD, false );
 
         // And the rest
-        registerColouredBlocks( event, "brick", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "colouredbrick", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "damask", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "diagonallydotted", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "dotted", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "fancytiles", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "floral", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "rippled", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "solid", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "stonebrick", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
-        registerColouredBlocks( event, "striped", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+        registerColouredBlocks( event, "brick", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "colouredbrick", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "damask", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "diagonallydotted", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "dotted", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "fancytiles", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "floral", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "rippled", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "solid", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "stonebrick", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
+        registerColouredBlocks( event, "striped", Material.ROCK, ToolType.PICKAXE, ModSoundType.STONE, false );
 
-        event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "compressed" ) );
-        event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "hardened" ) );
+        event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( ModSoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "compressed" ) );
+        event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( ModSoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "hardened" ) );
 
         setGlassTransparancy();
+
+    }
+
+    public static String getNextColour( final String colour, final int increment ) {
+
+        int index = IntStream.range( 0, COLOURS.length ).filter( i -> colour.equals( COLOURS[i] ) ).findFirst().orElse( -1 );
+
+        index += increment;
+
+        if ( increment > 0 && index >= COLOURS.length )
+            index = 0;
+        else if ( increment < 0 && index < 0 )
+            index = COLOURS.length - 1;
+
+        return COLOURS[index];
 
     }
 

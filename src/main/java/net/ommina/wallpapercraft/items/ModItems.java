@@ -14,6 +14,7 @@ import net.ommina.wallpapercraft.blocks.ModBlocks;
 public class ModItems {
 
     @ObjectHolder( "solidgray-0" ) public static Item BASE_ITEM;
+    @ObjectHolder( "paintbrush" ) public static Item PAINTBRUSH;
 
     @ObjectHolder( "pressclay" ) public static Item PRESS_CLAY;
     @ObjectHolder( "presswoodplank" ) public static Item PRESS_WOOD_PLANK;
@@ -38,6 +39,7 @@ public class ModItems {
             event.getRegistry().register( new PressVariant( Integer.toString( i ) ) );
 
         event.getRegistry().register( new Item( new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "pressblank" ) );
+        event.getRegistry().register( new Item( new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 1 ) ).setRegistryName( "paintbrush" ) );
         event.getRegistry().register( new BlockItem( ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( ("compressed") ) ), new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "compressed" ) );
         event.getRegistry().register( new BlockItem( ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( ("hardened") ) ), new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "hardened" ) );
 

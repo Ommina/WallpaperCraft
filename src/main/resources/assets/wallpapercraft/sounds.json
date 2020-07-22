@@ -1,0 +1,7 @@
+{
+  "block_change_in_world": {
+    "category": "block",
+    "subtitle": "wallpapercraft.subtitle.block_change_in_world",
+    "sounds": [ "wallpapercraft:block_change_in_world" ]
+  }
+}
