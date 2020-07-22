@@ -1,3 +1,14 @@
+1.3.3   2020-07-22
+
+ADD: Paintbrush item.  This item can be used to cycle via left-click in-world opaque (non-glass) blocks through their colours.
+ADD: Ability to use colour presses to directly set an in-world block's colour.  Again, left-click.
+
+Note!  This changes the block's colour; the variant within a colour remains the same.
+
+Paintbrush sprite is from Openblocks, mirrored horizontally.
+
+Built against Forge 32.0.75 and JEI 7.0.0.6
+
 1.3.2   2020-07-16
 
 FIX: Harvest Levels and Tool Types not being applied.  This fix requires Forge 32.0.55 or greater to have an effect.

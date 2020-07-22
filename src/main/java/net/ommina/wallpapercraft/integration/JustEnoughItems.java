@@ -18,6 +18,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.ommina.wallpapercraft.Wallpapercraft;
+import net.ommina.wallpapercraft.items.ModItems;
 import net.ommina.wallpapercraft.recipes.PressCraftingRecipe;
 
 import java.util.ArrayList;
@@ -30,18 +31,10 @@ public class JustEnoughItems implements IModPlugin {
 
     private static final ResourceLocation PLUGIN_UID = Wallpapercraft.getId( "plugin/main" );
 
+    //region Overrides
     @Override
     public ResourceLocation getPluginUid() {
         return PLUGIN_UID;
-    }
-
-    @Override
-    public void registerRecipes( IRecipeRegistration registration ) {
-
-        registration.addRecipes( getRecipesOfType( IRecipeType.CRAFTING ), VanillaRecipeCategoryUid.CRAFTING );
-
-        addInfoPage( registration, PressCraftingCategory.BASE_ITEM.getItem() );
-
     }
 
     @Override
@@ -50,6 +43,16 @@ public class JustEnoughItems implements IModPlugin {
         IExtendableRecipeCategory<ICraftingRecipe, ICraftingCategoryExtension> category = registration.getCraftingCategory();
 
         category.addCategoryExtension( PressCraftingRecipe.class, PressCraftingCategory::new );
+
+    }
+
+    @Override
+    public void registerRecipes( IRecipeRegistration registration ) {
+
+        registration.addRecipes( getRecipesOfType( IRecipeType.CRAFTING ), VanillaRecipeCategoryUid.CRAFTING );
+
+        addInfoPage( registration, PressCraftingCategory.BASE_ITEM.getItem() );
+        addInfoPage( registration, ModItems.PAINTBRUSH );
 
     }
 
@@ -64,6 +67,7 @@ public class JustEnoughItems implements IModPlugin {
         jeiRuntime.getIngredientManager().removeIngredientsAtRuntime( VanillaTypes.ITEM, removals );
 
     }
+//endregion Overrides
 
     private static List<IRecipe> getRecipesOfType( IRecipeType<?> recipeType ) {
 

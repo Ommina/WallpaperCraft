@@ -12,6 +12,7 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class ModBlocks {
 
@@ -23,6 +24,8 @@ public class ModBlocks {
     public static final Map<String, IDecorativeBlock> BLOCKS = new HashMap<String, IDecorativeBlock>();
 
     public static void register( final RegistryEvent.Register<Block> event ) {
+
+        /* For non-glass blocks (ie: DecorativeBlockPatterned), the onHit sound is determined by the class itself, not the SoundType */
 
         // Light Emitting
         registerColouredBlocks( event, "auralamp", Material.ROCK, ToolType.PICKAXE, SoundType.LANTERN, true );
@@ -60,6 +63,21 @@ public class ModBlocks {
         event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "hardened" ) );
 
         setGlassTransparancy();
+
+    }
+
+    public static String getNextColour( final String colour, final int increment ) {
+
+        int index = IntStream.range( 0, COLOURS.length ).filter( i -> colour.equals( COLOURS[i] ) ).findFirst().orElse( -1 );
+
+        index += increment;
+
+        if ( increment > 0 && index >= COLOURS.length )
+            index = 0;
+        else if ( increment < 0 && index < 0 )
+            index = COLOURS.length - 1;
+
+        return COLOURS[index];
 
     }
 

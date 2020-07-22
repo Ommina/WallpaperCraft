@@ -3,6 +3,9 @@
 
   "jei.wallpapercraft.solidgray-0.desc": "The base WallpaperCraft crafting block.\n\nCombine with one to three Presses to change its look.\n\nAny WallpaperCraft block, not just the base block, can be altered this way.",
 
+  "item.wallpapercraft.paintbrush": "Paintbrush",
+  "jei.wallpapercraft.paintbrush.desc": "Left-click on opaque (non-glass) blocks in-world to cycle through their colors.",
+
   "item.wallpapercraft.pressvariant0": "Variant Press: 1",
   "item.wallpapercraft.pressvariant1": "Variant Press: 2",
   "item.wallpapercraft.pressvariant2": "Variant Press: 3",
