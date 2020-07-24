@@ -18,7 +18,7 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
              .sound( soundType )
              .harvestTool( toolType )
              .harvestLevel( 0 )
-             .hardnessAndResistance( 2.0f )
+             .hardnessAndResistance( 0.3f )
              .notSolid()
              .func_235861_h_()
              .func_235838_a_( ( p_235464_0_ ) -> light )
