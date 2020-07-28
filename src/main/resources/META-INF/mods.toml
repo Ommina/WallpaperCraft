@@ -13,6 +13,8 @@ loaderVersion="[32,)" #mandatory (32 is forge for 1.16.1)
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL="https://github.com/Ommina/WallpaperCraft" #optional
 
+license="MIT"
+
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 
@@ -20,7 +22,7 @@ issueTrackerURL="https://github.com/Ommina/WallpaperCraft" #optional
 modId="wallpapercraft" #mandatory
 
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.3.3" #mandatory
+version="1.3.4" #mandatory
 
 # A display name for the mod
 displayName="Wallpapercraft" #mandatory
