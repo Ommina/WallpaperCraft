@@ -12,7 +12,7 @@ WallpaperCraft adds hundreds of new building blocks in a vast range of colors, i
 
 The 1.7.10 and 1.10.2 versions are authored and released by AaronMC.
 
-The 1.14.4, 1.15.1, and 1.15.2 versions are authored and released by Ommina.
+The 1.14.4, 1.15.1, 1.15.2, 1.16.1, and 1.16.2 versions are authored and released by Ommina.
 
 The 1.14.4 version, and subsequent updates, are a complete rewrite, using no code from the earlier versions.  It does, however, reuse oliviaoliviasson's original textures and item/block names.
 
