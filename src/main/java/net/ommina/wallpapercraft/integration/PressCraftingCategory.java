@@ -36,9 +36,9 @@ public class PressCraftingCategory implements ICraftingCategoryExtension {
 
         baseItem.add( BASE_ITEM );
 
-        Tags.TAG_PRESS_PATTERN.func_230236_b_().forEach( s -> pressPattern.add( new ItemStack( s ) ) );
-        Tags.TAG_PRESS_COLOUR.func_230236_b_().forEach( s -> pressColour.add( new ItemStack( s ) ) );
-        Tags.TAG_PRESS_VARIANT.func_230236_b_().forEach( s -> pressVariant.add( new ItemStack( s ) ) );
+        Tags.TAG_PRESS_PATTERN.getAllElements().forEach( s -> pressPattern.add( new ItemStack( s ) ) );
+        Tags.TAG_PRESS_COLOUR.getAllElements().forEach( s -> pressColour.add( new ItemStack( s ) ) );
+        Tags.TAG_PRESS_VARIANT.getAllElements().forEach( s -> pressVariant.add( new ItemStack( s ) ) );
 
         final List<List<ItemStack>> inputs = new ArrayList<List<ItemStack>>();
         final List<List<ItemStack>> outputs = new ArrayList<List<ItemStack>>();

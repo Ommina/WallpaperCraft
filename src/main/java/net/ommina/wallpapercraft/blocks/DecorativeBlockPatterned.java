@@ -30,8 +30,8 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
              .harvestTool( toolType )
              .harvestLevel( 0 )
              .hardnessAndResistance( 1.5f )
-             .func_235861_h_()                              // https://github.com/MinecraftForge/MinecraftForge/issues/6906#issuecomment-653921871
-             .func_235838_a_( ( p_235464_0_ ) -> light )
+             .setRequiresTool()                              // https://github.com/MinecraftForge/MinecraftForge/issues/6906#issuecomment-653921871
+             .setLightLevel( ( p_235464_0_ ) -> light )
         );
 
         this.pattern = pattern;
