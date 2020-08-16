@@ -5,12 +5,15 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 
 @ObjectHolder( Wallpapercraft.MODID )
+@Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.MOD )
 public class ModItems {
 
     @ObjectHolder( "solidgray-0" ) public static Item BASE_ITEM;
@@ -22,6 +25,7 @@ public class ModItems {
     @ObjectHolder( "pressstonebrick" ) public static Item PRESS_STONE_BRICK;
     @ObjectHolder( "pressstriped" ) public static Item PRESS_STRIPED;
 
+    @SubscribeEvent
     public static void register( final RegistryEvent.Register<Item> event ) {
 
         ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> {
@@ -44,15 +48,11 @@ public class ModItems {
     }
 
     public static DecorativeItem get( final String pattern, final String colour, final int suffix ) {
-
         return (DecorativeItem) ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + "-" + suffix ) );
-
     }
 
     public static DecorativeItem get( final ResourceLocation location ) {
-
         return (DecorativeItem) ForgeRegistries.ITEMS.getValue( location );
-
     }
 
 }

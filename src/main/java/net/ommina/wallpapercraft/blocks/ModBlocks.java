@@ -7,11 +7,14 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.MOD )
 public class ModBlocks {
 
     public static final String[] COLOURS = { "blue", "brown", "cyan", "gray", "green", "purple", "red", "yellow" };
@@ -21,6 +24,7 @@ public class ModBlocks {
 
     public static final Map<String, IDecorativeBlock> BLOCKS = new HashMap<String, IDecorativeBlock>();
 
+    @SubscribeEvent
     public static void register( final RegistryEvent.Register<Block> event ) {
 
         // Light Emitting
