@@ -1,3 +1,10 @@
+1.0.8  2020-08-15
+
+FIX: Typo in pattern press holder.  The only user-facing change is the press might start appearing in village chests.
+
+Barring the discovery of a significant bug -- not especially likely at this point -- this will be the last 1.14.4 version to be released.
+
+
 1.0.7 2020-06-30
 
 FIX: Add missing Wooden Plank Press recipe.
