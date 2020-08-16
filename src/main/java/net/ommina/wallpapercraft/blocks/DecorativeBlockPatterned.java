@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import net.ommina.wallpapercraft.items.ModItems;
 import net.ommina.wallpapercraft.items.PressColour;
+import net.ommina.wallpapercraft.items.PressVariant;
 import net.ommina.wallpapercraft.sounds.ModSoundType;
 
 import javax.annotation.Nullable;
@@ -44,7 +45,7 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
 
     //region Overrides
     public String getName() {
-        return getName( this.pattern, this.colour, this.suffix );
+        return this.pattern + this.colour + this.suffix;
     }
 
     public String getPattern() {
@@ -70,7 +71,7 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
         if ( player.getHeldItemMainhand().isEmpty() )
             return SoundType.STONE;
 
-        if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH || player.getHeldItemMainhand().getItem() instanceof PressColour )
+        if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH || player.getHeldItemMainhand().getItem() instanceof PressColour || player.getHeldItemMainhand().getItem() instanceof PressVariant )
             return ModSoundType.STONE;
 
         return SoundType.STONE;
@@ -83,10 +84,11 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
         BlockState block = null;
 
         if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH )
-            block = getIncrementedBlockColour();
-
-        if ( player.getHeldItemMainhand().getItem() instanceof PressColour )
-            block = getBlockFromColourPress( (PressColour) player.getHeldItemMainhand().getItem() );
+            block = InWorldHelper.getIncrementedBlockColour( this );
+        else if ( player.getHeldItemMainhand().getItem() instanceof PressColour )
+            block = InWorldHelper.getBlockFromColourPress( this, (PressColour) player.getHeldItemMainhand().getItem() );
+        else if ( player.getHeldItemMainhand().getItem() instanceof PressVariant )
+            block = InWorldHelper.getBlockFromVariantPress( this, (PressVariant) player.getHeldItemMainhand().getItem() );
 
         if ( block == null )
             return;
@@ -96,34 +98,5 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
 
     }
 //endregion Overrides
-
-    private BlockState getIncrementedBlockColour() {
-
-        Block block = (Block) ModBlocks.BLOCKS.get( getName( this.pattern, ModBlocks.getNextColour( this.colour, 1 ), this.suffix ) );
-
-        if ( block == null )
-            block = (Block) ModBlocks.BLOCKS.get( getName( this.pattern, ModBlocks.getNextColour( this.colour, 2 ), this.suffix ) );
-
-        if ( block == null )
-            return null;
-
-        return block.getDefaultState();
-
-    }
-
-    private BlockState getBlockFromColourPress( final PressColour pressColour ) {
-
-        final Block block = (Block) ModBlocks.BLOCKS.get( getName( this.pattern, pressColour.getColour(), this.suffix ) );
-
-        if ( block == null )
-            return null;
-
-        return block.getDefaultState();
-
-    }
-
-    private String getName( final String pattern, final String colour, final String suffix ) {
-        return pattern + colour + suffix;
-    }
 
 }
