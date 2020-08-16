@@ -1,3 +1,9 @@
+1.0.9  2020-06-16
+
+And fewer than 12h after "the last 1.14.4 version"", a new 1.14.4 version.
+
+ADD: zh_cn translation by 2001whl.
+
 1.0.8  2020-08-15
 
 FIX: Typo in pattern press holder.  The only user-facing change is the press might start appearing in village chests.
