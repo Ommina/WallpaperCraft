@@ -4,10 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.MOD )
 public class ModBlocks {
 
     public static final String[] COLOURS = { "blue", "brown", "cyan", "gray", "green", "purple", "red", "yellow" };
@@ -17,7 +20,8 @@ public class ModBlocks {
 
     public static final Map<String, DecorativeBlock> BLOCKS = new HashMap<String, DecorativeBlock>();
 
-    public static void register( final RegistryEvent.Register<Block> event ) {
+    @SubscribeEvent
+    public static void registerBlocks( final RegistryEvent.Register<Block> event ) {
 
         // Light Emitting
         registerColouredBlocks( event, "auralamp", Material.ROCK, SoundType.LANTERN, true );
