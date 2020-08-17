@@ -2,3 +2,4 @@
 
 ADD: Expand in-world changing of blocks to include glass blocks.
 ADD: Ability to use variant presses to directly set an in-world block's variant. Again, left-click.
+ADD: Add zh_cn translation by 2001whl
