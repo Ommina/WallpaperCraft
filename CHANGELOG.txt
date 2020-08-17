@@ -2,6 +2,7 @@
 
 ADD: Backport the 1.16 paintbrush addition.  Left-click the paintbrush on a block to cycle through the block's available colours.  OR left-click a dye press on a block to directly change the
      block's colour to match that of the dye press.  OR left-click a variant press on a block to directly change the block's variant to that of the variant press.
+ADD: Backport the 1.16 Press item model changes.
 
 1.2.1  2020-07-17
 
