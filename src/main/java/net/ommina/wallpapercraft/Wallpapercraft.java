@@ -30,6 +30,8 @@ public class Wallpapercraft {
 
         MinecraftForge.EVENT_BUS.register( this );
 
+        DeferredRegistries.setup();
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener( this::setup );
 
     }
