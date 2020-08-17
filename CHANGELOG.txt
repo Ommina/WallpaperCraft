@@ -1,3 +1,15 @@
+1.3.5  2020-08-17
+
+ADD: Expand in-world changing of blocks to include glass blocks.
+ADD: Ability to use variant presses to directly set an in-world block's variant.  Again, left-click.
+
+1.3.4  2020-07-28
+
+CHANGED: Change glass hardness to match that of vanilla's
+CHANGED: Updated all the press item's first- and third- person view scaling and translation to (hopefully) be more visually appealing
+
+Added License field so mod will start with forge versions past 32.0.88
+
 1.3.3   2020-07-22
 
 ADD: Paintbrush item.  This item can be used to cycle via left-click in-world opaque (non-glass) blocks through their colours.

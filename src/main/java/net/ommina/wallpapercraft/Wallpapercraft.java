@@ -1,6 +1,5 @@
 package net.ommina.wallpapercraft;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -12,7 +11,6 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.client.ClientProxy;
 import net.ommina.wallpapercraft.items.ModItems;
 import net.ommina.wallpapercraft.network.Network;
@@ -46,11 +44,6 @@ public class Wallpapercraft {
         @SubscribeEvent
         public static void registerSerials( RegistryEvent.Register<IRecipeSerializer<?>> event ) {
             IRecipeSerializer.register( PressCraftingRecipe.NAME.toString(), PressCraftingRecipe.SERIALIZER );
-        }
-
-        @SubscribeEvent
-        public static void onBlocksRegistry( final RegistryEvent.Register<Block> event ) {
-            ModBlocks.register( event );
         }
 
         @SubscribeEvent
