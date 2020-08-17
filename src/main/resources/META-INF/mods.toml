@@ -11,7 +11,7 @@ modLoader="javafml" #mandatory
 loaderVersion="[32,)" #mandatory (32 is forge for 1.16.1)
 
 # A URL to refer people to when problems occur with this mod
-issueTrackerURL="https://github.com/Ommina/WallpaperCraft" #optional
+issueTrackerURL="https://github.com/Ommina/Wallpapercraft" #optional
 
 license="MIT"
 
