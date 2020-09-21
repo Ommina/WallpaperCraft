@@ -83,6 +83,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         String pattern = "";
         String colour = "";
         String suffix = "";
+        String postfix = "";
 
         boolean hasChanged = false;
 
@@ -100,6 +101,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
                 pattern = block.getPattern();
                 colour = block.getColour();
                 suffix = block.getSuffix();
+                postfix = block.getPostfix();
 
                 break;
 
@@ -139,7 +141,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         if ( !hasChanged )
             return ItemStack.EMPTY;
 
-        Item item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + suffix ) );
+        Item item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + suffix + postfix) );
 
         if ( item == null )
             return ItemStack.EMPTY;

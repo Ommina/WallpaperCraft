@@ -86,15 +86,24 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'wallpapercraft', '--all', '--output', file('src/generated/resources/')
 
             mods {
-                examplemod {
+                wallpapercraft {
                     source sourceSets.main
                 }
             }
         }
     }
+}
+
+task sourcesJar(type: Jar) {
+    classifier = "sources"
+    from sourceSets.main.allJava
+}
+
+artifacts {
+    archives sourcesJar
 }
 
 repositories {
@@ -171,6 +180,9 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             artifact reobfArtifact
+        }
+        mavenJava(MavenPublication) {
+            artifact sourcesJar
         }
     }
     repositories {
