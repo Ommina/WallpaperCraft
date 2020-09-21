@@ -25,9 +25,9 @@ public class ModItems {
 
     public static void register( final RegistryEvent.Register<Item> event ) {
 
-        ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s -> {
-            event.getRegistry().register( new DecorativeItem( (Block) ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s ) );
-        } );
+        ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s ->
+             event.getRegistry().register( new DecorativeItem( (Block) ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s ) )
+        );
 
         for ( String s : ModBlocks.PATTERNS )
             event.getRegistry().register( new PressPattern( s ) );
@@ -46,15 +46,11 @@ public class ModItems {
     }
 
     public static DecorativeItem get( final String pattern, final String colour, final int suffix ) {
-
         return (DecorativeItem) ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + "-" + suffix ) );
-
     }
 
     public static DecorativeItem get( final ResourceLocation location ) {
-
         return (DecorativeItem) ForgeRegistries.ITEMS.getValue( location );
-
     }
 
 }

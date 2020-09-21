@@ -20,33 +20,42 @@ import javax.annotation.Nullable;
 
 public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorativeBlock {
 
+    private static final String POSTFIX = "";
+
     private final String pattern;
     private final String colour;
     private final String suffix;
 
-    public DecorativeBlockGlass( final String pattern, final String colour, final int suffix, final Material material, final ToolType toolType, final SoundType soundType, final int light ) {
+    public DecorativeBlockGlass( final String pattern, final String colour, final int suffix, final Material material, final ToolType toolType, final SoundType soundType, final float hardness, final int light ) {
 
         super( Block.Properties.create( material )
              .sound( soundType )
              .harvestTool( toolType )
              .harvestLevel( 0 )
-             .hardnessAndResistance( 0.3f )
+             .hardnessAndResistance( hardness )
              .notSolid()
              .setRequiresTool()
-             .setLightLevel( ( p_235464_0_ ) -> light )
+             .setLightLevel( ( l ) -> light )
         );
 
         this.pattern = pattern;
         this.colour = colour;
         this.suffix = "-" + suffix;
 
-        setRegistryName( getName() );
-
     }
 
     //region Overrides
     public String getName() {
         return this.pattern + this.colour + this.suffix;
+    }
+
+    @Override
+    public String getPostfix() {
+        return POSTFIX;
+    }
+
+    public String getNameForRegistry() {
+        return getName() + POSTFIX;
     }
 
     public String getPattern() {

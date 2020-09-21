@@ -1,10 +1,12 @@
 package net.ommina.wallpapercraft.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BreakableBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.item.DyeColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
@@ -37,7 +39,7 @@ public class ModBlocks {
         registerColouredBlocks( event, "tintedglass", Material.GLASS, ToolType.PICKAXE, SoundType.GLASS, false );
 
         // Wool
-        registerColouredBlocks( event, "checkeredwool", Material.WOOL, ToolType.PICKAXE, SoundType.CLOTH, false );
+        registerColouredBlocks( event, "checkeredwool", Material.WOOL,  ToolType.PICKAXE, SoundType.CLOTH, false );
         registerColouredBlocks( event, "wool", Material.WOOL, ToolType.PICKAXE, SoundType.CLOTH, false );
 
         // Clay
@@ -58,6 +60,9 @@ public class ModBlocks {
         registerColouredBlocks( event, "solid", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
         registerColouredBlocks( event, "stonebrick", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
         registerColouredBlocks( event, "striped", Material.ROCK, ToolType.PICKAXE, SoundType.STONE, false );
+
+        // Carpets (wool textures only)
+        registerCarpets( event, "wool", Material.WOOL, ToolType.PICKAXE, SoundType.CLOTH, false );
 
         event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "compressed" ) );
         event.getRegistry().register( new Block( Block.Properties.create( Material.ROCK ).sound( SoundType.STONE ).hardnessAndResistance( 2.0f ) ).setRegistryName( "hardened" ) );
@@ -81,9 +86,9 @@ public class ModBlocks {
 
     }
 
-    private static void registerColouredBlocks( final RegistryEvent.Register<Block> event, final String variant, final Material material, final ToolType toolType, SoundType soundType, final boolean isLight ) {
+    private static void registerColouredBlocks( final RegistryEvent.Register<Block> event, final String pattern, final Material material, final ToolType toolType, SoundType soundType, final boolean isLight ) {
 
-        for ( String s : COLOURS ) {
+        for ( final String s : COLOURS ) {
 
             final int suffixCount = s.equals( "cyan" ) ? 9 : 14;
 
@@ -93,13 +98,36 @@ public class ModBlocks {
                 final int light = isLight ? 15 : 0;
 
                 if ( material == Material.GLASS )
-                    block = new DecorativeBlockGlass( variant, s, suffix, material, toolType, soundType, light );
+                    block = new DecorativeBlockGlass( pattern, s, suffix, material, toolType, soundType, 0.3f, light );
                 else
-                    block = new DecorativeBlockPatterned( variant, s, suffix, material, toolType, soundType, light );
+                    block = new DecorativeBlockPatterned( pattern, s, suffix, material, toolType, soundType, 1.5f, light );
+
+                ((BreakableBlock) block).setRegistryName( block.getName() );
 
                 event.getRegistry().register( (Block) block );
 
                 BLOCKS.put( block.getName(), block );
+
+            }
+        }
+
+    }
+
+    private static void registerCarpets( final RegistryEvent.Register<Block> event, final String pattern, final Material material, final ToolType toolType, SoundType soundType, final boolean isLight ) {
+
+        for ( final String s : COLOURS ) {
+
+            final int suffixCount = s.equals( "cyan" ) ? 9 : 14;
+
+            for ( int suffix = 0; suffix <= suffixCount; suffix++ ) {
+
+                final DecorativeCarpet block = new DecorativeCarpet( pattern, s, suffix, DyeColor.WHITE, material, toolType, soundType, 0.8f, 0 );
+
+                block.setRegistryName( block.getNameForRegistry() );
+
+                event.getRegistry().register( block );
+
+                BLOCKS.put( block.getName() + "_carpet", block );
 
             }
         }

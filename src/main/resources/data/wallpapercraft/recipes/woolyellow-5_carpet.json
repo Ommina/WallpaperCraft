@@ -1,0 +1,16 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "group": "wallpapercraft",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wallpapercraft:woolyellow-5"
+    }
+  },
+  "result": {
+    "item": "wallpapercraft:woolyellow-5_carpet",
+    "count": 3
+  }
+}

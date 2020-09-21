@@ -9,10 +9,10 @@ public class InWorldHelper {
 
     public static BlockState getIncrementedBlockColour( final IDecorativeBlock blockIn ) {
 
-        Block block = (Block) ModBlocks.BLOCKS.get( getName( blockIn.getPattern(), ModBlocks.getNextColour( blockIn.getColour(), 1 ), blockIn.getSuffix() ) );
+        Block block = (Block) ModBlocks.BLOCKS.get( getRegistryName( blockIn.getPattern(), ModBlocks.getNextColour( blockIn.getColour(), 1 ), blockIn.getSuffix(), blockIn ) );
 
         if ( block == null )
-            block = (Block) ModBlocks.BLOCKS.get( getName( blockIn.getPattern(), ModBlocks.getNextColour( blockIn.getColour(), 2 ), blockIn.getSuffix() ) );
+            block = (Block) ModBlocks.BLOCKS.get( getRegistryName( blockIn.getPattern(), ModBlocks.getNextColour( blockIn.getColour(), 2 ), blockIn.getSuffix(), blockIn ) );
 
         if ( block == null )
             return null;
@@ -23,7 +23,7 @@ public class InWorldHelper {
 
     public static BlockState getBlockFromColourPress( final IDecorativeBlock blockIn, final PressColour pressColour ) {
 
-        final Block block = (Block) ModBlocks.BLOCKS.get( getName( blockIn.getPattern(), pressColour.getColour(), blockIn.getSuffix() ) );
+        final Block block = (Block) ModBlocks.BLOCKS.get( getRegistryName( blockIn.getPattern(), pressColour.getColour(), blockIn.getSuffix(), blockIn ) );
 
         if ( block == null )
             return null;
@@ -34,7 +34,7 @@ public class InWorldHelper {
 
     public static BlockState getBlockFromVariantPress( final IDecorativeBlock blockIn, final PressVariant pressVariant ) {
 
-        final Block block = (Block) ModBlocks.BLOCKS.get( getName( blockIn.getPattern(), blockIn.getColour(), pressVariant.getVariant() ) );
+        final Block block = (Block) ModBlocks.BLOCKS.get( getRegistryName( blockIn.getPattern(), blockIn.getColour(), pressVariant.getVariant(), blockIn ) );
 
         if ( block == null )
             return null;
@@ -43,8 +43,8 @@ public class InWorldHelper {
 
     }
 
-    private static String getName( final String pattern, final String colour, final String suffix ) {
-        return pattern + colour + suffix;
+    private static String getRegistryName( final String pattern, final String colour, final String suffix, final IDecorativeBlock block ) {
+        return pattern + colour + suffix + block.getPostfix();
     }
 
 }

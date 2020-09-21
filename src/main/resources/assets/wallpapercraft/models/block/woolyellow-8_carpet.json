@@ -1,0 +1,6 @@
+﻿{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "wallpapercraft:block/wool/woolyellow-8"
+  }
+}

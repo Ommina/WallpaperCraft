@@ -20,32 +20,40 @@ import javax.annotation.Nullable;
 
 public class DecorativeBlockPatterned extends BreakableBlock implements IDecorativeBlock {
 
-    private final String pattern;
-    private final String colour;
-    private final String suffix;
+    private static final String POSTFIX = "";
 
-    public DecorativeBlockPatterned( final String pattern, final String colour, final int suffix, final Material material, final ToolType toolType, final SoundType soundType, final int light ) {
+    protected final String pattern;
+    protected final String colour;
+    protected final String suffix;
+
+    public DecorativeBlockPatterned( final String pattern, final String colour, final int suffix, final Material material, final ToolType toolType, final SoundType soundType, final float hardness, final int light ) {
 
         super( Block.Properties.create( material )
              .sound( soundType )
              .harvestTool( toolType )
              .harvestLevel( 0 )
-             .hardnessAndResistance( 1.5f )
+             .hardnessAndResistance( hardness )
              .setRequiresTool()                              // https://github.com/MinecraftForge/MinecraftForge/issues/6906#issuecomment-653921871
-             .setLightLevel( ( p_235464_0_ ) -> light )
+             .setLightLevel( ( l ) -> light )
         );
 
         this.pattern = pattern;
         this.colour = colour;
         this.suffix = "-" + suffix;
 
-        setRegistryName( getName() );
-
     }
 
     //region Overrides
     public String getName() {
         return this.pattern + this.colour + this.suffix;
+    }
+
+    public String getPostfix() {
+        return POSTFIX;
+    }
+
+    public String getNameForRegistry() {
+        return getName() + POSTFIX;
     }
 
     public String getPattern() {
@@ -61,20 +69,22 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
     }
 
     @Override
-    public SoundType getSoundType( BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity ) {
+    public SoundType getSoundType( final BlockState state, final IWorldReader world, final BlockPos pos, @Nullable final Entity entity ) {
+
+        final SoundType soundType = state.getSoundType();
 
         if ( !(entity instanceof PlayerEntity) )
-            return SoundType.STONE;
+            return soundType;
 
         final PlayerEntity player = (PlayerEntity) entity;
 
         if ( player.getHeldItemMainhand().isEmpty() )
-            return SoundType.STONE;
+            return soundType;
 
         if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH || player.getHeldItemMainhand().getItem() instanceof PressColour || player.getHeldItemMainhand().getItem() instanceof PressVariant )
             return ModSoundType.STONE;
 
-        return SoundType.STONE;
+        return soundType;
 
     }
 
