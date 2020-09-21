@@ -1,3 +1,11 @@
+1.4.4  2020-09-21
+
+FIX: Carpets reverting to wool blocks via crouch-scroll mechanic.
+
+1.4.3  2020-09-21
+
+ADD: Carpets from wool blocks.  Normal vanilla recipe and yield.  Press crafting and In-World changing of carpet blocks / items DOES apply.
+
 1.4.2  2020-08-17
 
 ADD: Expand in-world changing of blocks to include glass blocks.
