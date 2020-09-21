@@ -45,8 +45,8 @@ public class ModItems {
 
     }
 
-    public static DecorativeItem get( final String pattern, final String colour, final int suffix ) {
-        return (DecorativeItem) ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + "-" + suffix ) );
+    public static DecorativeItem get( final String pattern, final String colour, final int suffix, final String postfix ) {
+        return (DecorativeItem) ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + "-" + suffix + postfix ) );
     }
 
     public static DecorativeItem get( final ResourceLocation location ) {

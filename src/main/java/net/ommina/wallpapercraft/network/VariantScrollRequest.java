@@ -50,11 +50,12 @@ public class VariantScrollRequest {
                 if ( stack.getItem() instanceof DecorativeItem ) {
 
                     final IDecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
+                    final String postfix = block.getPostfix();
 
                     if ( block != null ) {
 
                         final int suffix = MathUtil.rollOver( Math.abs( Integer.parseInt( block.getSuffix() ) ) + delta, 0, block.getColour().contains( "cyan" ) ? 9 : 14 );
-                        final DecorativeItem item = ModItems.get( block.getPattern(), block.getColour(), suffix );
+                        final DecorativeItem item = ModItems.get( block.getPattern(), block.getColour(), suffix, postfix );
 
                         if ( item != null )
                             player.setHeldItem( Hand.MAIN_HAND, new ItemStack( item, stack.getCount() ) );
