@@ -103,24 +103,12 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
                 final Block block = ForgeRegistries.BLOCKS.getValue( stack.getItem().getRegistryName() );
 
-                //System.out.println( "ItemStack: " + stack.toString() );
-                //System.out.println( "Block: " + block.toString() );
-                //System.out.println( "Item: " + stack.getItem().toString() );
-
                 if ( !(block instanceof IDecorativeBlock) )
                     return ItemStack.EMPTY;
 
                 final IDecorativeBlock decorativeBlock = (IDecorativeBlock) block;
 
-                //final IDecorativeBlock block = // ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
-
-                //if ( block == null )
-                //    return ItemStack.EMPTY;
-
                 sourceModNamespace = ((Block) decorativeBlock).getRegistryName().getNamespace();
-
-                //System.out.println( "Namespace: " + sourceModNamespace );
-                //System.out.println( "DecorativeBlock: " + ((Block) decorativeBlock).toString() );
 
                 pattern = decorativeBlock.getPattern();
                 colour = decorativeBlock.getColour();

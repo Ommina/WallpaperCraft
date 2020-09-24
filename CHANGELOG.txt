@@ -1,3 +1,11 @@
+1.2.3  2020-09-24
+
+ADD: Internal changes to support press crafting recipes for the three dependant mods (stairs, slabs, walls).
+
+There should be no noticable user-facing changes.  Users who do -not- intend on installing any of the child mods can give this release a miss.
+
+Built against Forge 31.2.0
+
 1.2.2  2020-08-16
 
 ADD: Backport the 1.16 paintbrush addition.  Left-click the paintbrush on a block to cycle through the block's available colours.  OR left-click a dye press on a block to directly change the
