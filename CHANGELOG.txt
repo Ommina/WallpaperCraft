@@ -1,3 +1,9 @@
+1.2.4  2020-09-25
+
+ADD: Further changes to support in-world block changes for stairs, slabs, and wall.
+
+Version 1.2.3 has been archived on CF to avoid users downloading it pointlessly.
+
 1.2.3  2020-09-24
 
 ADD: Internal changes to support press crafting recipes for the three dependant mods (stairs, slabs, walls).

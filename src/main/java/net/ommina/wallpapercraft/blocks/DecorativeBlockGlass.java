@@ -1,9 +1,6 @@
 package net.ommina.wallpapercraft.blocks;
 
-import net.minecraft.block.AbstractGlassBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -78,7 +75,7 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
     @Override
     public void onBlockClicked( final BlockState state, final World world, final BlockPos pos, final PlayerEntity player ) {
 
-        BlockState block = null;
+        Block block = Blocks.AIR;
 
         if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH )
             block = InWorldHelper.getIncrementedBlockColour( this );
@@ -87,11 +84,11 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
         else if ( player.getHeldItemMainhand().getItem() instanceof PressVariant )
             block = InWorldHelper.getBlockFromVariantPress( this, (PressVariant) player.getHeldItemMainhand().getItem() );
 
-        if ( block == null )
+        if ( block == Blocks.AIR )
             return;
 
         if ( !world.isRemote )
-            world.setBlockState( pos, block, 3 );
+            world.setBlockState( pos, block.getDefaultState(), 3 );
 
     }
 //endregion Overrides
