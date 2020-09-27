@@ -6,9 +6,9 @@ Version 1.2.3 has been archived on CF to avoid users downloading it pointlessly.
 
 1.2.3  2020-09-24
 
-ADD: Internal changes to support press crafting recipes for the three dependant mods (stairs, slabs, walls).
+ADD: Internal changes to support press crafting recipes for the three dependent mods (stairs, slabs, walls).
 
-There should be no noticable user-facing changes.  Users who do -not- intend on installing any of the child mods can give this release a miss.
+There should be no noticeable user-facing changes.  Users who do -not- intend on installing any of the child mods can give this release a miss.
 
 Built against Forge 31.2.0
 
