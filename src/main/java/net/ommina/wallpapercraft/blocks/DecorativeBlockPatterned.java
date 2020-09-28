@@ -44,16 +44,13 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
     }
 
     //region Overrides
-    public String getName() {
-        return this.pattern + this.colour + this.suffix;
-    }
 
     public String getPostfix() {
         return POSTFIX;
     }
 
     public String getNameForRegistry() {
-        return getName() + POSTFIX;
+        return this.pattern + this.colour + this.suffix + POSTFIX;
     }
 
     public String getPattern() {
@@ -82,31 +79,18 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
             return soundType;
 
         if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH || player.getHeldItemMainhand().getItem() instanceof PressColour || player.getHeldItemMainhand().getItem() instanceof PressVariant )
-            return ModSoundType.STONE;
+            return ModSoundType.BLOCK_CHANGE;
 
         return soundType;
 
     }
 
+
     @Override
     public void onBlockClicked( final BlockState state, final World world, final BlockPos pos, final PlayerEntity player ) {
-
-        BlockState block = null;
-
-        if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH )
-            block = InWorldHelper.getIncrementedBlockColour( this );
-        else if ( player.getHeldItemMainhand().getItem() instanceof PressColour )
-            block = InWorldHelper.getBlockFromColourPress( this, (PressColour) player.getHeldItemMainhand().getItem() );
-        else if ( player.getHeldItemMainhand().getItem() instanceof PressVariant )
-            block = InWorldHelper.getBlockFromVariantPress( this, (PressVariant) player.getHeldItemMainhand().getItem() );
-
-        if ( block == null )
-            return;
-
-        if ( !world.isRemote )
-            world.setBlockState( pos, block, 3 );
-
+        IDecorativeBlock.super.onBlockClicked( state, world, pos, player );
     }
+
 //endregion Overrides
 
 }

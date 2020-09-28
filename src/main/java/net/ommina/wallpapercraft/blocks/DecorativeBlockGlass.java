@@ -45,17 +45,13 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
     }
 
     //region Overrides
-    public String getName() {
-        return this.pattern + this.colour + this.suffix;
-    }
-
     @Override
     public String getPostfix() {
         return POSTFIX;
     }
 
     public String getNameForRegistry() {
-        return getName() + POSTFIX;
+        return this.pattern + this.colour + this.suffix + POSTFIX;
     }
 
     public String getPattern() {
@@ -71,7 +67,7 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
     }
 
     @Override
-    public SoundType getSoundType( BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity ) {
+    public SoundType getSoundType( final BlockState state, final IWorldReader world, final BlockPos pos, @Nullable final Entity entity ) {
 
         if ( !(entity instanceof PlayerEntity) )
             return SoundType.GLASS;
@@ -82,7 +78,7 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
             return SoundType.GLASS;
 
         if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH || player.getHeldItemMainhand().getItem() instanceof PressColour || player.getHeldItemMainhand().getItem() instanceof PressVariant )
-            return ModSoundType.STONE;
+            return ModSoundType.BLOCK_CHANGE;
 
         return SoundType.STONE;
 
@@ -90,23 +86,9 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
 
     @Override
     public void onBlockClicked( final BlockState state, final World world, final BlockPos pos, final PlayerEntity player ) {
-
-        BlockState block = null;
-
-        if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH )
-            block = InWorldHelper.getIncrementedBlockColour( this );
-        else if ( player.getHeldItemMainhand().getItem() instanceof PressColour )
-            block = InWorldHelper.getBlockFromColourPress( this, (PressColour) player.getHeldItemMainhand().getItem() );
-        else if ( player.getHeldItemMainhand().getItem() instanceof PressVariant )
-            block = InWorldHelper.getBlockFromVariantPress( this, (PressVariant) player.getHeldItemMainhand().getItem() );
-
-        if ( block == null )
-            return;
-
-        if ( !world.isRemote )
-            world.setBlockState( pos, block, 3 );
-
+        IDecorativeBlock.super.onBlockClicked( state, world, pos, player );
     }
-//endregion Overrides
+
+    //endregion Overrides
 
 }

@@ -1,3 +1,9 @@
+1.4.5  2020-09-27
+
+ADD: Support for the Stair, Slab, and Wall child-mods.
+
+There should be no visible user-facing changes with this release.  If players do not intend on using one of the add-on mods, they can give this release a miss.
+
 1.4.4  2020-09-21
 
 FIX: Carpets reverting to wool blocks via crouch-scroll mechanic.

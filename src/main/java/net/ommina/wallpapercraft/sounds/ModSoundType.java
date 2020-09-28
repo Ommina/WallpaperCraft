@@ -8,7 +8,7 @@ import net.ommina.wallpapercraft.DeferredRegistries;
 
 public class ModSoundType extends SoundType {
 
-    public static ModSoundType STONE = new ModSoundType( 1.0F, 1.0F, SoundEvents.BLOCK_STONE_BREAK, SoundEvents.BLOCK_STONE_STEP, SoundEvents.BLOCK_STONE_PLACE, DeferredRegistries.BLOCK_CHANGE_IN_WORLD, SoundEvents.BLOCK_STONE_FALL );
+    public static ModSoundType BLOCK_CHANGE = new ModSoundType( 1.0F, 1.0F, SoundEvents.BLOCK_STONE_BREAK, SoundEvents.BLOCK_STONE_STEP, SoundEvents.BLOCK_STONE_PLACE, DeferredRegistries.BLOCK_CHANGE_IN_WORLD, SoundEvents.BLOCK_STONE_FALL );
 
     private RegistryObject<SoundEvent> hitSound;
 

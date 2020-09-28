@@ -32,7 +32,7 @@ public class PressCraftingCategory implements ICraftingCategoryExtension {
 
         final List<ItemStack> output = new ArrayList<>();
 
-        ModBlocks.BLOCKS.values().forEach( b -> output.add( new ItemStack( ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( b.getName() ) ) ) ) );
+        ModBlocks.BLOCKS.values().forEach( b -> output.add( new ItemStack( ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( b.getNameForRegistry() ) ) ) ) );
 
         baseItem.add( BASE_ITEM );
 

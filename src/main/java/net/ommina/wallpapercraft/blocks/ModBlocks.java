@@ -39,7 +39,7 @@ public class ModBlocks {
         registerColouredBlocks( event, "tintedglass", Material.GLASS, ToolType.PICKAXE, SoundType.GLASS, false );
 
         // Wool
-        registerColouredBlocks( event, "checkeredwool", Material.WOOL,  ToolType.PICKAXE, SoundType.CLOTH, false );
+        registerColouredBlocks( event, "checkeredwool", Material.WOOL, ToolType.PICKAXE, SoundType.CLOTH, false );
         registerColouredBlocks( event, "wool", Material.WOOL, ToolType.PICKAXE, SoundType.CLOTH, false );
 
         // Clay
@@ -102,11 +102,11 @@ public class ModBlocks {
                 else
                     block = new DecorativeBlockPatterned( pattern, s, suffix, material, toolType, soundType, 1.5f, light );
 
-                ((BreakableBlock) block).setRegistryName( block.getName() );
+                ((BreakableBlock) block).setRegistryName( block.getNameForRegistry() );
 
                 event.getRegistry().register( (Block) block );
 
-                BLOCKS.put( block.getName(), block );
+                BLOCKS.put( block.getNameForRegistry(), block );
 
             }
         }
@@ -127,7 +127,7 @@ public class ModBlocks {
 
                 event.getRegistry().register( block );
 
-                BLOCKS.put( block.getName() + "_carpet", block );
+                BLOCKS.put( block.getNameForRegistry(), block );
 
             }
         }

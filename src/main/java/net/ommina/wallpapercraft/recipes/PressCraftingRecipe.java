@@ -1,6 +1,7 @@
 package net.ommina.wallpapercraft.recipes;
 
 import com.google.gson.JsonObject;
+import net.minecraft.block.Block;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.IDecorativeBlock;
-import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.items.*;
 
 import javax.annotation.Nonnull;
@@ -84,6 +84,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         String colour = "";
         String suffix = "";
         String postfix = "";
+        String sourceModNamespace = "";
 
         boolean hasChanged = false;
 
@@ -93,15 +94,19 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             if ( !stack.isEmpty() && stack.getItem() instanceof DecorativeItem ) {
 
-                final IDecorativeBlock block = ModBlocks.BLOCKS.get( stack.getItem().getRegistryName().getPath() );
+                final Block block = ForgeRegistries.BLOCKS.getValue( stack.getItem().getRegistryName());
 
-                if ( block == null )
+                if ( !(block instanceof IDecorativeBlock ))
                     return ItemStack.EMPTY;
 
-                pattern = block.getPattern();
-                colour = block.getColour();
-                suffix = block.getSuffix();
-                postfix = block.getPostfix();
+                sourceModNamespace = block.getRegistryName().getNamespace();
+
+                final IDecorativeBlock decorativeBlock = (IDecorativeBlock) block;
+
+                pattern = decorativeBlock.getPattern();
+                colour = decorativeBlock.getColour();
+                suffix = decorativeBlock.getSuffix();
+                postfix = decorativeBlock.getPostfix();
 
                 break;
 
@@ -115,7 +120,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             if ( !stack.isEmpty() && stack.getItem() instanceof Press ) {
 
-                Press press = (Press) stack.getItem();
+                final Press press = (Press) stack.getItem();
 
                 if ( press instanceof PressPattern ) {
 
@@ -141,7 +146,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         if ( !hasChanged )
             return ItemStack.EMPTY;
 
-        Item item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( pattern + colour + suffix + postfix) );
+        final Item item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( sourceModNamespace, pattern + colour + suffix + postfix) );
 
         if ( item == null )
             return ItemStack.EMPTY;

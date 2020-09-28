@@ -60,8 +60,17 @@ public class Wallpapercraft {
 
     }
 
-    public static ResourceLocation getId( String path ) {
+    public static ResourceLocation getId( final String path ) {
         return new ResourceLocation( MODID, path );
+    }
+
+    public static ResourceLocation getId( final String namespace, final String path ) {
+
+        if ( namespace == null || namespace.isEmpty() )
+            return getId( path );
+
+        return new ResourceLocation( namespace, path );
+
     }
 
     private void setup( final FMLCommonSetupEvent event ) {
