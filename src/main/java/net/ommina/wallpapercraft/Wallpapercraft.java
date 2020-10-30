@@ -44,8 +44,8 @@ public class Wallpapercraft {
     public static class RegistryEvents {
 
         @SubscribeEvent
-        public static void registerSerials( RegistryEvent.Register<IRecipeSerializer<?>> event ) {
-            IRecipeSerializer.register( PressCraftingRecipe.NAME.toString(), PressCraftingRecipe.SERIALIZER );
+        public static void registerSerials( final RegistryEvent.Register<IRecipeSerializer<?>> event ) {
+            event.getRegistry().register( PressCraftingRecipe.SERIALIZER );
         }
 
         @SubscribeEvent

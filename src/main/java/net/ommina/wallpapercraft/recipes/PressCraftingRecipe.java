@@ -26,16 +26,24 @@ public class PressCraftingRecipe implements ICraftingRecipe {
     public static final Serializer SERIALIZER = new Serializer();
 
     public static final IRecipeType<PressCraftingRecipe> RECIPE_TYPE = new IRecipeType<PressCraftingRecipe>() {
+//region Overrides
         @Override
         public String toString() {
             return Wallpapercraft.getId( "presscrafting" ).toString();
         }
+//endregion Overrides
     };
 
     private final ResourceLocation id;
 
     public PressCraftingRecipe( final ResourceLocation id ) {
         this.id = id;
+    }
+
+//region Overrides
+    @Override
+    public IRecipeType<?> getType() {
+        return IRecipeType.CRAFTING;
     }
 
     @Override
@@ -94,9 +102,9 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
             if ( !stack.isEmpty() && stack.getItem() instanceof DecorativeItem ) {
 
-                final Block block = ForgeRegistries.BLOCKS.getValue( stack.getItem().getRegistryName());
+                final Block block = ForgeRegistries.BLOCKS.getValue( stack.getItem().getRegistryName() );
 
-                if ( !(block instanceof IDecorativeBlock ))
+                if ( !(block instanceof IDecorativeBlock) )
                     return ItemStack.EMPTY;
 
                 sourceModNamespace = block.getRegistryName().getNamespace();
@@ -146,13 +154,24 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         if ( !hasChanged )
             return ItemStack.EMPTY;
 
-        final Item item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( sourceModNamespace, pattern + colour + suffix + postfix) );
+        final Item item = ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( sourceModNamespace, pattern + colour + suffix + postfix ) );
 
         if ( item == null )
             return ItemStack.EMPTY;
 
         return new ItemStack( item, 1 );
 
+    }
+
+    @Override
+    public boolean canFit( final int width, final int height ) {
+        return true;
+    }
+
+    @Nonnull
+    @Override
+    public ItemStack getRecipeOutput() {
+        return ItemStack.EMPTY;
     }
 
     @Nonnull
@@ -178,18 +197,6 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         return list;
     }
 
-
-    @Override
-    public boolean canFit( final int width, final int height ) {
-        return true;
-    }
-
-    @Nonnull
-    @Override
-    public ItemStack getRecipeOutput() {
-        return ItemStack.EMPTY;
-    }
-
     @Override
     public boolean isDynamic() {
         return true; // Don't show in recipe book
@@ -207,23 +214,20 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         return this.id;
     }
 
-    @Override
-    public IRecipeType<?> getType() {
-        return IRecipeType.CRAFTING;
-    }
-
     @Nonnull
     @Override
     public IRecipeSerializer<?> getSerializer() {
         return SERIALIZER;
     }
+//endregion Overrides
 
     public static final class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<PressCraftingRecipe> {
 
         private Serializer() {
-
+            setRegistryName( Wallpapercraft.getId( "presscrafting" ) );
         }
 
+//region Overrides
         @Nonnull
         @Override
         public PressCraftingRecipe read( @Nonnull final ResourceLocation recipeId, @Nonnull final JsonObject json ) {
@@ -240,6 +244,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
         @Override
         public void write( PacketBuffer buffer, PressCraftingRecipe recipe ) {
         }
+//endregion Overrides
 
     }
 

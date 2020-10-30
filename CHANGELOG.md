@@ -1,3 +1,7 @@
+1.4.6  2020-10-29
+
+FIX: Incorrect recipe registration causing a startup crash on newer versions of Forge.
+
 1.4.5  2020-09-27
 
 ADD: Support for the Stair, Slab, and Wall child-mods.
