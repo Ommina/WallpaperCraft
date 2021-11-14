@@ -1,8 +1,8 @@
 package net.ommina.wallpapercraft.network;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.network.NetworkRegistry;
-import net.minecraftforge.fml.network.simple.SimpleChannel;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.fmllegacy.network.NetworkRegistry;
+import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
 import net.ommina.wallpapercraft.Wallpapercraft;
 
 public class Network {
@@ -14,17 +14,26 @@ public class Network {
 
     static {
 
-        channel = NetworkRegistry.ChannelBuilder.named( NAME )
-             .clientAcceptedVersions( PROTOCOL_VERSION::equals )
-             .serverAcceptedVersions( PROTOCOL_VERSION::equals )
-             .networkProtocolVersion( () -> PROTOCOL_VERSION )
-             .simpleChannel();
+        channel = NetworkRegistry.newSimpleChannel(
+             NAME,
+             () -> PROTOCOL_VERSION,
+             PROTOCOL_VERSION::equals,
+             PROTOCOL_VERSION::equals
+        );
 
-        channel.messageBuilder( VariantScrollRequest.class, channelId++ )
-             .decoder( VariantScrollRequest::fromBytes )
-             .encoder( VariantScrollRequest::toBytes )
-             .consumer( VariantScrollRequest::handle )
-             .add();
+        channel.registerMessage(
+             channelId++,
+             VariantScrollRequest.class,
+             VariantScrollRequest::toBytes,
+             VariantScrollRequest::fromBytes,
+             VariantScrollRequest::handle
+        );
+
+//        channel.messageBuilder( VariantScrollRequest.class, channelId++ )
+//             .decoder( VariantScrollRequest::fromBytes )
+//             .encoder( VariantScrollRequest::toBytes )
+//             .consumer( VariantScrollRequest::handle )
+//             .add();
 
     }
 

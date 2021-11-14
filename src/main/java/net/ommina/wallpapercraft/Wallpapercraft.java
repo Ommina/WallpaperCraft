@@ -1,10 +1,10 @@
 package net.ommina.wallpapercraft;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,7 +28,7 @@ public class Wallpapercraft {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "wallpapercraft";
 
-    public static final ItemGroup TAB = new CreativeTab();
+    public static final CreativeModeTab TAB = new CreativeTab();
 
     public Wallpapercraft() {
 
@@ -44,7 +44,7 @@ public class Wallpapercraft {
     public static class RegistryEvents {
 
         @SubscribeEvent
-        public static void registerSerials( final RegistryEvent.Register<IRecipeSerializer<?>> event ) {
+        public static void registerSerials( final RegistryEvent.Register<RecipeSerializer<?>> event ) {
             event.getRegistry().register( PressCraftingRecipe.SERIALIZER );
         }
 

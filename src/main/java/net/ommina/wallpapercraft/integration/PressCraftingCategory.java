@@ -3,7 +3,7 @@ package net.ommina.wallpapercraft.integration;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.extensions.vanilla.crafting.ICraftingCategoryExtension;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
@@ -36,9 +36,9 @@ public class PressCraftingCategory implements ICraftingCategoryExtension {
 
         baseItem.add( BASE_ITEM );
 
-        Tags.TAG_PRESS_PATTERN.getAllElements().forEach( s -> pressPattern.add( new ItemStack( s ) ) );
-        Tags.TAG_PRESS_COLOUR.getAllElements().forEach( s -> pressColour.add( new ItemStack( s ) ) );
-        Tags.TAG_PRESS_VARIANT.getAllElements().forEach( s -> pressVariant.add( new ItemStack( s ) ) );
+        Tags.TAG_PRESS_PATTERN.getValues().forEach( s -> pressPattern.add( new ItemStack( s ) ) );
+        Tags.TAG_PRESS_COLOUR.getValues().forEach( s -> pressColour.add( new ItemStack( s ) ) );
+        Tags.TAG_PRESS_VARIANT.getValues().forEach( s -> pressVariant.add( new ItemStack( s ) ) );
 
         final List<List<ItemStack>> inputs = new ArrayList<List<ItemStack>>();
         final List<List<ItemStack>> outputs = new ArrayList<List<ItemStack>>();

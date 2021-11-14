@@ -1,6 +1,6 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 import net.ommina.wallpapercraft.Wallpapercraft;
 
 public abstract class Press extends Item {
@@ -9,8 +9,8 @@ public abstract class Press extends Item {
 
     public Press( String variant ) {
         super( new Item.Properties()
-             .maxStackSize( 1 )
-             .group( Wallpapercraft.TAB ) );
+             .stacksTo( 1 )
+             .tab( Wallpapercraft.TAB ) );
 
         this.variant = variant;
     }

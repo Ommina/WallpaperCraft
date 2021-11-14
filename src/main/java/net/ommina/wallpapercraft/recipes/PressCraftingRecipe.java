@@ -1,17 +1,17 @@
 package net.ommina.wallpapercraft.recipes;
 
 import com.google.gson.JsonObject;
-import net.minecraft.block.Block;
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ICraftingRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.ommina.wallpapercraft.Wallpapercraft;
@@ -20,12 +20,12 @@ import net.ommina.wallpapercraft.items.*;
 
 import javax.annotation.Nonnull;
 
-public class PressCraftingRecipe implements ICraftingRecipe {
+public class PressCraftingRecipe implements CraftingRecipe {
 
     public static final ResourceLocation NAME = Wallpapercraft.getId( "presscrafting" );
     public static final Serializer SERIALIZER = new Serializer();
 
-    public static final IRecipeType<PressCraftingRecipe> RECIPE_TYPE = new IRecipeType<PressCraftingRecipe>() {
+    public static final RecipeType<PressCraftingRecipe> RECIPE_TYPE = new RecipeType<PressCraftingRecipe>() {
 //region Overrides
         @Override
         public String toString() {
@@ -42,21 +42,21 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
 //region Overrides
     @Override
-    public IRecipeType<?> getType() {
-        return IRecipeType.CRAFTING;
+    public RecipeType<?> getType() {
+        return RecipeType.CRAFTING;
     }
 
     @Override
-    public boolean matches( @Nonnull final CraftingInventory inv, @Nonnull final World world ) {
+    public boolean matches( @Nonnull final CraftingContainer inv, @Nonnull final Level world ) {
 
         int patternPressCount = 0;
         int colourPressCount = 0;
         int variantPressCount = 0;
         int decorativeCount = 0;
 
-        for ( int k = 0; k < inv.getSizeInventory(); k++ ) {
+        for ( int k = 0; k < inv.getContainerSize(); k++ ) {
 
-            final ItemStack stack = inv.getStackInSlot( k );
+            final ItemStack stack = inv.getItem( k );
 
             if ( !stack.isEmpty() ) {
 
@@ -86,7 +86,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
     @Override
     @Nonnull
-    public ItemStack getCraftingResult( @Nonnull final CraftingInventory inv ) {
+    public ItemStack assemble( @Nonnull final CraftingContainer inv ) {
 
         String pattern = "";
         String colour = "";
@@ -96,9 +96,9 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
         boolean hasChanged = false;
 
-        for ( int i = 0; i < inv.getSizeInventory(); i++ ) {
+        for ( int i = 0; i < inv.getContainerSize(); i++ ) {
 
-            final ItemStack stack = inv.getStackInSlot( i );
+            final ItemStack stack = inv.getItem( i );
 
             if ( !stack.isEmpty() && stack.getItem() instanceof DecorativeItem ) {
 
@@ -122,9 +122,9 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
         }
 
-        for ( int i = 0; i < inv.getSizeInventory(); i++ ) {
+        for ( int i = 0; i < inv.getContainerSize(); i++ ) {
 
-            final ItemStack stack = inv.getStackInSlot( i );
+            final ItemStack stack = inv.getItem( i );
 
             if ( !stack.isEmpty() && stack.getItem() instanceof Press ) {
 
@@ -164,25 +164,25 @@ public class PressCraftingRecipe implements ICraftingRecipe {
     }
 
     @Override
-    public boolean canFit( final int width, final int height ) {
+    public boolean canCraftInDimensions( final int width, final int height ) {
         return true;
     }
 
     @Nonnull
     @Override
-    public ItemStack getRecipeOutput() {
+    public ItemStack getResultItem() {
         return ItemStack.EMPTY;
     }
 
     @Nonnull
     @Override
-    public NonNullList<ItemStack> getRemainingItems( final CraftingInventory inv ) {
+    public NonNullList<ItemStack> getRemainingItems( final CraftingContainer inv ) {
 
-        final NonNullList<ItemStack> list = NonNullList.withSize( inv.getSizeInventory(), ItemStack.EMPTY );
+        final NonNullList<ItemStack> list = NonNullList.withSize( inv.getContainerSize(), ItemStack.EMPTY );
 
-        for ( int i = 0; i < inv.getSizeInventory(); i++ ) {
+        for ( int i = 0; i < inv.getContainerSize(); i++ ) {
 
-            final ItemStack stack = inv.getStackInSlot( i );
+            final ItemStack stack = inv.getItem( i );
 
             if ( stack.getItem() instanceof Press ) {
 
@@ -198,7 +198,7 @@ public class PressCraftingRecipe implements ICraftingRecipe {
     }
 
     @Override
-    public boolean isDynamic() {
+    public boolean isSpecial() {
         return true; // Don't show in recipe book
     }
 
@@ -216,12 +216,12 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 
     @Nonnull
     @Override
-    public IRecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<?> getSerializer() {
         return SERIALIZER;
     }
 //endregion Overrides
 
-    public static final class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<PressCraftingRecipe> {
+    public static final class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<PressCraftingRecipe> {
 
         private Serializer() {
             setRegistryName( Wallpapercraft.getId( "presscrafting" ) );
@@ -230,19 +230,19 @@ public class PressCraftingRecipe implements ICraftingRecipe {
 //region Overrides
         @Nonnull
         @Override
-        public PressCraftingRecipe read( @Nonnull final ResourceLocation recipeId, @Nonnull final JsonObject json ) {
+        public PressCraftingRecipe fromJson( @Nonnull final ResourceLocation recipeId, @Nonnull final JsonObject json ) {
 
             return new PressCraftingRecipe( recipeId );
 
         }
 
         @Override
-        public PressCraftingRecipe read( final ResourceLocation recipeId, final PacketBuffer buffer ) {
+        public PressCraftingRecipe fromNetwork( final ResourceLocation recipeId, final FriendlyByteBuf buffer ) {
             return new PressCraftingRecipe( recipeId );
         }
 
         @Override
-        public void write( PacketBuffer buffer, PressCraftingRecipe recipe ) {
+        public void toNetwork( FriendlyByteBuf buffer, PressCraftingRecipe recipe ) {
         }
 //endregion Overrides
 

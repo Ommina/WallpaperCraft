@@ -1,16 +1,15 @@
 package net.ommina.wallpapercraft.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BreakableBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HalfTransparentBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.ommina.wallpapercraft.items.ModItems;
 import net.ommina.wallpapercraft.items.PressColour;
 import net.ommina.wallpapercraft.items.PressVariant;
@@ -18,7 +17,7 @@ import net.ommina.wallpapercraft.sounds.ModSoundType;
 
 import javax.annotation.Nullable;
 
-public class DecorativeBlockPatterned extends BreakableBlock implements IDecorativeBlock {
+public class DecorativeBlockPatterned extends HalfTransparentBlock implements IDecorativeBlock {
 
     private static final String POSTFIX = "";
 
@@ -26,15 +25,13 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
     protected final String colour;
     protected final String suffix;
 
-    public DecorativeBlockPatterned( final String pattern, final String colour, final int suffix, final Material material, final ToolType toolType, final SoundType soundType, final float hardness, final int light ) {
+    public DecorativeBlockPatterned( final String pattern, final String colour, final int suffix, final Material material, final SoundType soundType, final float hardness, final int light ) {
 
-        super( Block.Properties.create( material )
+        super( Block.Properties.of( material )
              .sound( soundType )
-             .harvestTool( toolType )
-             .harvestLevel( 0 )
-             .hardnessAndResistance( hardness )
-             .setRequiresTool()                              // https://github.com/MinecraftForge/MinecraftForge/issues/6906#issuecomment-653921871
-             .setLightLevel( ( l ) -> light )
+             .strength( hardness )
+             .requiresCorrectToolForDrops()                              // https://github.com/MinecraftForge/MinecraftForge/issues/6906#issuecomment-653921871
+             .lightLevel( ( l ) -> light )
         );
 
         this.pattern = pattern;
@@ -44,6 +41,10 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
     }
 
     //region Overrides
+    @Override
+    public void attack( final BlockState state, final Level world, final BlockPos pos, final Player player ) {
+        IDecorativeBlock.super.onBlockClicked( state, world, pos, player );
+    }
 
     public String getPostfix() {
         return POSTFIX;
@@ -66,31 +67,24 @@ public class DecorativeBlockPatterned extends BreakableBlock implements IDecorat
     }
 
     @Override
-    public SoundType getSoundType( final BlockState state, final IWorldReader world, final BlockPos pos, @Nullable final Entity entity ) {
+    public SoundType getSoundType( final BlockState state, final LevelReader world, final BlockPos pos, @Nullable final Entity entity ) {
 
         final SoundType soundType = state.getSoundType();
 
-        if ( !(entity instanceof PlayerEntity) )
+        if ( !(entity instanceof Player) )
             return soundType;
 
-        final PlayerEntity player = (PlayerEntity) entity;
+        final Player player = (Player) entity;
 
-        if ( player.getHeldItemMainhand().isEmpty() )
+        if ( player.getMainHandItem().isEmpty() )
             return soundType;
 
-        if ( player.getHeldItemMainhand().getItem() == ModItems.PAINTBRUSH || player.getHeldItemMainhand().getItem() instanceof PressColour || player.getHeldItemMainhand().getItem() instanceof PressVariant )
+        if ( player.getMainHandItem().getItem() == ModItems.PAINTBRUSH || player.getMainHandItem().getItem() instanceof PressColour || player.getMainHandItem().getItem() instanceof PressVariant )
             return ModSoundType.BLOCK_CHANGE;
 
         return soundType;
 
     }
-
-
-    @Override
-    public void onBlockClicked( final BlockState state, final World world, final BlockPos pos, final PlayerEntity player ) {
-        IDecorativeBlock.super.onBlockClicked( state, world, pos, player );
-    }
-
 //endregion Overrides
 
 }

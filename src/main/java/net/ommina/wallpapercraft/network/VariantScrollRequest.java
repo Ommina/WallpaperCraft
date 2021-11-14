@@ -1,10 +1,10 @@
 package net.ommina.wallpapercraft.network;
 
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.Hand;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fmllegacy.network.NetworkEvent;
 import net.ommina.wallpapercraft.blocks.IDecorativeBlock;
 import net.ommina.wallpapercraft.blocks.ModBlocks;
 import net.ommina.wallpapercraft.items.DecorativeItem;
@@ -26,7 +26,7 @@ public class VariantScrollRequest {
 
     }
 
-    public static VariantScrollRequest fromBytes( PacketBuffer buf ) {
+    public static VariantScrollRequest fromBytes( FriendlyByteBuf buf ) {
 
         VariantScrollRequest packet = new VariantScrollRequest();
 
@@ -40,12 +40,12 @@ public class VariantScrollRequest {
 
         ctx.get().enqueueWork( () -> {
 
-            final ServerPlayerEntity player = ctx.get().getSender();
+            final ServerPlayer player = ctx.get().getSender();
             final int delta = packet.delta;
 
-            if ( player.isCrouching() && player.getHeldItemMainhand() != ItemStack.EMPTY ) {
+            if ( player.isCrouching() && player.getMainHandItem() != ItemStack.EMPTY ) {
 
-                ItemStack stack = player.getHeldItemMainhand();
+                ItemStack stack = player.getMainHandItem();
 
                 if ( stack.getItem() instanceof DecorativeItem ) {
 
@@ -58,7 +58,7 @@ public class VariantScrollRequest {
                         final DecorativeItem item = ModItems.get( block.getPattern(), block.getColour(), suffix, postfix );
 
                         if ( item != null )
-                            player.setHeldItem( Hand.MAIN_HAND, new ItemStack( item, stack.getCount() ) );
+                            player.setItemInHand( InteractionHand.MAIN_HAND, new ItemStack( item, stack.getCount() ) );
 
                     }
 
@@ -72,7 +72,7 @@ public class VariantScrollRequest {
 
     }
 
-    public void toBytes( PacketBuffer buf ) {
+    public void toBytes( FriendlyByteBuf buf ) {
 
         buf.writeInt( this.delta );
 

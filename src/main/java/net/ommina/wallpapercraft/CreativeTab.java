@@ -1,10 +1,10 @@
 package net.ommina.wallpapercraft;
 
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class CreativeTab extends ItemGroup {
+public class CreativeTab extends CreativeModeTab {
 
     public CreativeTab() {
         super( "wallpapercraft" );
@@ -12,7 +12,7 @@ public class CreativeTab extends ItemGroup {
     }
 
     @Override
-    public ItemStack createIcon() {
+    public ItemStack makeIcon() {
 
         return new ItemStack( ForgeRegistries.ITEMS.getValue( Wallpapercraft.getId( "pressstonebrick" ) ), 1 );
     }

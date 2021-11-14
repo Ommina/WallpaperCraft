@@ -5,27 +5,27 @@
 # Find more information on toml format here:  https://github.com/toml-lang/toml
 
 # The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
-modLoader="javafml" #mandatory
+modLoader = "javafml" #mandatory
 
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[33,)" #mandatory (33 is forge for 1.16.2)
+loaderVersion = "[37,)" #mandatory (33 is forge for 1.16.2)
 
 # A URL to refer people to when problems occur with this mod
-issueTrackerURL="https://github.com/Ommina/Wallpapercraft" #optional
+issueTrackerURL = "https://github.com/Ommina/Wallpapercraft" #optional
 
-license="MIT"
+license = "MIT"
 
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 
 # The modid of the mod
-modId="wallpapercraft" #mandatory
+modId = "wallpapercraft" #mandatory
 
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="${mod_version}" #mandatory
+version = "1.5.0" #mandatory
 
 # A display name for the mod
-displayName="Wallpapercraft" #mandatory
+displayName = "Wallpapercraft" #mandatory
 
 # A URL to query for updates for this mod. See the JSON update specification <here>
 # updateJSONURL="http://myurl.me/" #optional
@@ -37,33 +37,33 @@ displayName="Wallpapercraft" #mandatory
 # logoFile="examplemod.png" #optional
 
 # A text field displayed in the mod UI
-credits="Oliviaoliviasson (textures)" #optional
+credits = "Oliviaoliviasson (textures)" #optional
 
 # A text field displayed in the mod UI
-authors="Ommina" #optional
+authors = "Ommina" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
-description='''
+description = '''
 Wallpapercraft - A Fresh Roll
 '''
 
-[[dependencies.forge]]
-    modId="forge" #mandatory, the modid of the dependency
-    mandatory=true #mandatory
-    versionRange="[${forge_version_min},${forge_version_max})" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-    ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT or SERVER
-    side="BOTH"
+[[dependencies.wallpapercraft]]
+modId = "forge" #mandatory, the modid of the dependency
+mandatory = true #mandatory
+versionRange = "[37,)" #mandatory
+# An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+ordering = "NONE"
+# Side this dependency is applied on - BOTH, CLIENT or SERVER
+side = "BOTH"
 
-[[dependencies.minecraft]]
-    modId="minecraft" #mandatory
-    mandatory=true #mandatory
-    versionRange="[${minecraft_version_min},${minecraft_version_max})" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-    ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT or SERVER
-    side="BOTH"
+[[dependencies.wallpapercraft]]
+modId = "minecraft" #mandatory
+mandatory = true #mandatory
+versionRange = "[1.17.1,1.18)" #mandatory
+# An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+ordering = "NONE"
+# Side this dependency is applied on - BOTH, CLIENT or SERVER
+side = "BOTH"
 
 # Here's another dependency
 #[[dependencies.examplemod]]

@@ -1,9 +1,9 @@
 package net.ommina.wallpapercraft.items;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
@@ -26,7 +26,7 @@ public class ModItems {
     public static void register( final RegistryEvent.Register<Item> event ) {
 
         ModBlocks.BLOCKS.keySet().stream().sorted().forEachOrdered( s ->
-             event.getRegistry().register( new DecorativeItem( (Block) ModBlocks.BLOCKS.get( s ), new Item.Properties().group( Wallpapercraft.TAB ) ).setRegistryName( s ) )
+             event.getRegistry().register( new DecorativeItem( (Block) ModBlocks.BLOCKS.get( s ), new Item.Properties().tab( Wallpapercraft.TAB ) ).setRegistryName( s ) )
         );
 
         for ( String s : ModBlocks.PATTERNS )
@@ -38,10 +38,10 @@ public class ModItems {
         for ( int i = 0; i <= 14; i++ )
             event.getRegistry().register( new PressVariant( Integer.toString( i ) ) );
 
-        event.getRegistry().register( new Item( new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "pressblank" ) );
-        event.getRegistry().register( new Item( new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 1 ) ).setRegistryName( "paintbrush" ) );
-        event.getRegistry().register( new BlockItem( ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( ("compressed") ) ), new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "compressed" ) );
-        event.getRegistry().register( new BlockItem( ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( ("hardened") ) ), new Item.Properties().group( Wallpapercraft.TAB ).maxStackSize( 64 ) ).setRegistryName( "hardened" ) );
+        event.getRegistry().register( new Item( new Item.Properties().tab( Wallpapercraft.TAB ).stacksTo( 64 ) ).setRegistryName( "pressblank" ) );
+        event.getRegistry().register( new Item( new Item.Properties().tab( Wallpapercraft.TAB ).stacksTo( 1 ) ).setRegistryName( "paintbrush" ) );
+        event.getRegistry().register( new BlockItem( ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( ("compressed") ) ), new Item.Properties().tab( Wallpapercraft.TAB ).stacksTo( 64 ) ).setRegistryName( "compressed" ) );
+        event.getRegistry().register( new BlockItem( ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( ("hardened") ) ), new Item.Properties().tab( Wallpapercraft.TAB ).stacksTo( 64 ) ).setRegistryName( "hardened" ) );
 
     }
 

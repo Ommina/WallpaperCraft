@@ -3,6 +3,6 @@
 
 package net.ommina.wallpapercraft.sounds;
 
-import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.MethodsReturnNonnullByDefault;
 
 import javax.annotation.ParametersAreNonnullByDefault;

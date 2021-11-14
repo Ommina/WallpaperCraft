@@ -1,14 +1,23 @@
 package net.ommina.wallpapercraft.events;
 
+/*
 
 import net.minecraft.loot.*;
-import net.minecraft.loot.functions.ILootFunction;
-import net.minecraft.loot.functions.SetCount;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.items.ModItems;
+
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.ConstantIntValue;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 
 @Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.FORGE )
 public class LootTableHandler {
@@ -16,17 +25,17 @@ public class LootTableHandler {
     @SubscribeEvent
     public static void onLootTableLoadEvent( final LootTableLoadEvent event ) {
 
-        if ( event.getName().equals( LootTables.CHESTS_SPAWN_BONUS_CHEST ) ) {
+        if ( event.getName().equals( BuiltInLootTables.SPAWN_BONUS_CHEST ) ) {
             addLootToTable( event.getTable(), 1, 64, false );
-        } else if ( event.getName().equals( LootTables.CHESTS_VILLAGE_VILLAGE_MASON ) ) {
+        } else if ( event.getName().equals( BuiltInLootTables.VILLAGE_MASON ) ) {
             addLootToTable( event.getTable(), 4, 32, true );
-        } else if ( event.getName().equals( LootTables.CHESTS_VILLAGE_VILLAGE_SAVANNA_HOUSE ) ) {
+        } else if ( event.getName().equals( BuiltInLootTables.VILLAGE_SAVANNA_HOUSE ) ) {
             addLootToTable( event.getTable(), 3, 32, true );
         } else if (
-             event.getName().equals( LootTables.CHESTS_VILLAGE_VILLAGE_DESERT_HOUSE ) ||
-                  event.getName().equals( LootTables.CHESTS_VILLAGE_VILLAGE_PLAINS_HOUSE ) ||
-                  event.getName().equals( LootTables.CHESTS_VILLAGE_VILLAGE_SNOWY_HOUSE ) ||
-                  event.getName().equals( LootTables.CHESTS_VILLAGE_VILLAGE_TAIGA_HOUSE ) ) {
+             event.getName().equals( BuiltInLootTables.VILLAGE_DESERT_HOUSE ) ||
+                  event.getName().equals( BuiltInLootTables.VILLAGE_PLAINS_HOUSE ) ||
+                  event.getName().equals( BuiltInLootTables.VILLAGE_SNOWY_HOUSE ) ||
+                  event.getName().equals( BuiltInLootTables.VILLAGE_TAIGA_HOUSE ) ) {
             addLootToTable( event.getTable(), 1, 32, true );
         }
 
@@ -43,13 +52,13 @@ public class LootTableHandler {
 
     private static LootPool getCommonPool( final int rolls, final int stackSize ) {
 
-        final LootPool.Builder pool = LootPool.builder().name( Wallpapercraft.MODID + "common" ).rolls( new ConstantRange( rolls ) );
-        final LootEntry.Builder lootEntry = ItemLootEntry.builder( ModItems.BASE_ITEM );
-        final ILootFunction.IBuilder function = SetCount.builder( new ConstantRange( stackSize ) );
+        final LootPool.Builder pool = LootPool.lootPool().name( Wallpapercraft.MODID + "common" ).setRolls( new ConstantIntValue( rolls ) );
+        final LootPoolEntryContainer.Builder lootEntry = LootItem.lootTableItem( ModItems.BASE_ITEM );
+        final LootItemFunction.Builder function = SetItemCountFunction.setCount( new ConstantIntValue( stackSize ) );
 
-        ((StandaloneLootEntry.Builder) lootEntry).acceptFunction( function );
+        ((LootPoolSingletonContainer.Builder) lootEntry).apply( function );
 
-        pool.addEntry( lootEntry );
+        pool.add( lootEntry );
 
         return pool.build();
 
@@ -57,18 +66,20 @@ public class LootTableHandler {
 
     private static LootPool getPatternPool() {
 
-        final LootPool.Builder pool = LootPool.builder().name( Wallpapercraft.MODID + "pattern" ).rolls( new ConstantRange( 1 ) );
-        final ILootFunction.IBuilder function = SetCount.builder( new ConstantRange( 1 ) );
+        final LootPool.Builder pool = LootPool.lootPool().name( Wallpapercraft.MODID + "pattern" ).setRolls( new ConstantIntValue( 1 ) );
+        final LootItemFunction.Builder function = SetItemCountFunction.setCount( new ConstantIntValue( 1 ) );
 
-        pool.addEntry( ItemLootEntry.builder( ModItems.PRESS_CLAY ).acceptFunction( function ) );
-        pool.addEntry( ItemLootEntry.builder( ModItems.PRESS_WOOD_PLANK ).acceptFunction( function ) );
-        pool.addEntry( ItemLootEntry.builder( ModItems.PRESS_COLOURED_BRICK ).acceptFunction( function ) );
-        pool.addEntry( ItemLootEntry.builder( ModItems.PRESS_SOLID ).acceptFunction( function ) );
-        pool.addEntry( ItemLootEntry.builder( ModItems.PRESS_STONE_BRICK ).acceptFunction( function ) );
-        pool.addEntry( ItemLootEntry.builder( ModItems.PRESS_STRIPED ).acceptFunction( function ) );
+        pool.add( LootItem.lootTableItem( ModItems.PRESS_CLAY ).apply( function ) );
+        pool.add( LootItem.lootTableItem( ModItems.PRESS_WOOD_PLANK ).apply( function ) );
+        pool.add( LootItem.lootTableItem( ModItems.PRESS_COLOURED_BRICK ).apply( function ) );
+        pool.add( LootItem.lootTableItem( ModItems.PRESS_SOLID ).apply( function ) );
+        pool.add( LootItem.lootTableItem( ModItems.PRESS_STONE_BRICK ).apply( function ) );
+        pool.add( LootItem.lootTableItem( ModItems.PRESS_STRIPED ).apply( function ) );
 
         return pool.build();
 
     }
 
 }
+
+*/

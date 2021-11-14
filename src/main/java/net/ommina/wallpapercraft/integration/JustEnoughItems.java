@@ -10,12 +10,13 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IVanillaCategoryExtensionRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ICraftingRecipe;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.ommina.wallpapercraft.Wallpapercraft;
 import net.ommina.wallpapercraft.items.ModItems;
@@ -40,7 +41,7 @@ public class JustEnoughItems implements IModPlugin {
     @Override
     public void registerVanillaCategoryExtensions( IVanillaCategoryExtensionRegistration registration ) {
 
-        IExtendableRecipeCategory<ICraftingRecipe, ICraftingCategoryExtension> category = registration.getCraftingCategory();
+        IExtendableRecipeCategory<CraftingRecipe, ICraftingCategoryExtension> category = registration.getCraftingCategory();
 
         category.addCategoryExtension( PressCraftingRecipe.class, PressCraftingCategory::new );
 
@@ -49,7 +50,7 @@ public class JustEnoughItems implements IModPlugin {
     @Override
     public void registerRecipes( IRecipeRegistration registration ) {
 
-        registration.addRecipes( getRecipesOfType( IRecipeType.CRAFTING ), VanillaRecipeCategoryUid.CRAFTING );
+        registration.addRecipes( getRecipesOfType( RecipeType.CRAFTING ), VanillaRecipeCategoryUid.CRAFTING );
 
         addInfoPage( registration, PressCraftingCategory.BASE_ITEM.getItem() );
         addInfoPage( registration, ModItems.PAINTBRUSH );
@@ -69,18 +70,18 @@ public class JustEnoughItems implements IModPlugin {
     }
 //endregion Overrides
 
-    private static List<IRecipe> getRecipesOfType( IRecipeType<?> recipeType ) {
+    private static List<Recipe> getRecipesOfType( RecipeType<?> recipeType ) {
 
-        return Minecraft.getInstance().world.getRecipeManager().getRecipes().stream().filter( r -> r instanceof PressCraftingRecipe ).collect( Collectors.toList() );
+        return Minecraft.getInstance().level.getRecipeManager().getRecipes().stream().filter( r -> r instanceof PressCraftingRecipe ).collect( Collectors.toList() );
 
     }
 
-    private static void addInfoPage( IRecipeRegistration reg, IItemProvider item ) {
+    private static void addInfoPage( IRecipeRegistration reg, ItemLike item ) {
 
         String key = getDescKey( Objects.requireNonNull( item.asItem().getRegistryName() ) );
         ItemStack stack = new ItemStack( item );
 
-        reg.addIngredientInfo( stack, VanillaTypes.ITEM, key );
+        reg.addIngredientInfo( stack, VanillaTypes.ITEM, new TextComponent( key ) );
 
     }
 
