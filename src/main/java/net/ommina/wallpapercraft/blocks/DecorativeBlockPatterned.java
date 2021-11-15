@@ -30,7 +30,6 @@ public class DecorativeBlockPatterned extends HalfTransparentBlock implements ID
         super( Block.Properties.of( material )
              .sound( soundType )
              .strength( hardness )
-             .requiresCorrectToolForDrops()                              // https://github.com/MinecraftForge/MinecraftForge/issues/6906#issuecomment-653921871
              .lightLevel( ( l ) -> light )
         );
 

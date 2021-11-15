@@ -31,7 +31,6 @@ public class DecorativeBlockGlass extends AbstractGlassBlock implements IDecorat
              .sound( soundType )
              .strength( hardness )
              .noOcclusion()
-             .requiresCorrectToolForDrops()
              .lightLevel( ( l ) -> light )
         );
 
