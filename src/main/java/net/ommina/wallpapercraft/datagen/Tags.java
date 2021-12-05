@@ -21,8 +21,6 @@ public class Tags extends BlockTagsProvider {
     @Override
     protected void addTags() {
 
-        System.out.println("I are adding tags");
-
         for ( final IDecorativeBlock b : ModBlocks.BLOCKS.values() ) {
 
             final Block block = ForgeRegistries.BLOCKS.getValue( Wallpapercraft.getId( b.getNameForRegistry() ) );
