@@ -3,7 +3,7 @@ package net.ommina.wallpapercraft.sounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 import net.ommina.wallpapercraft.DeferredRegistries;
 
 public class ModSoundType extends SoundType {
