@@ -17,7 +17,7 @@ import net.ommina.wallpapercraft.sounds.ModSoundType;
 
 import javax.annotation.Nullable;
 
-public class DecorativeBlockPatterned extends HalfTransparentBlock implements IDecorativeBlock {
+public class DecorativeBlockPatterned extends HalfTransparentBlock implements IDecorativeBlock, IClickableBlock {
 
     private static final String POSTFIX = "";
 
@@ -42,7 +42,7 @@ public class DecorativeBlockPatterned extends HalfTransparentBlock implements ID
     //region Overrides
     @Override
     public void attack( final BlockState state, final Level world, final BlockPos pos, final Player player ) {
-        IDecorativeBlock.super.onBlockClicked( state, world, pos, player );
+        IClickableBlock.super.onBlockClicked( state, world, pos, player );
     }
 
     public String getPostfix() {
