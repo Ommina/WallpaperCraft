@@ -22,7 +22,7 @@ license = "MIT"
 modId = "wallpapercraft" #mandatory
 
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version = "1.6.0" #mandatory
+version = "1.6.1" #mandatory
 
 # A display name for the mod
 displayName = "Wallpapercraft" #mandatory
@@ -37,7 +37,7 @@ displayName = "Wallpapercraft" #mandatory
 # logoFile="examplemod.png" #optional
 
 # A text field displayed in the mod UI
-credits = "Oliviaoliviasson (textures)" #optional
+credits = "Oliviaoliviasson (textures), toby20_ (planks textures)" #optional
 
 # A text field displayed in the mod UI
 authors = "Ommina" #optional
